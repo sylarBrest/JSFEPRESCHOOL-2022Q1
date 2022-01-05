@@ -30,7 +30,10 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    font: normal var(--font3) 'Inter', sans-serif;
     color: var(--white);
 }
 
@@ -68,7 +71,9 @@ body {
 
 .nav {
     margin-left: auto;
+    padding: 0 18px;
 }
+
 
 .nav-list {
     display: flex;
@@ -78,10 +83,73 @@ body {
 }
 
 .nav-link {
-    padding: 0 20px;
+    padding: 0 15px;
+    color: var(--white);
     line-height: 50px;
     transition: .3s;
     text-decoration: none;
+}
+
+.switch-lng {
+    display: flex;
+    justify-content: space-between;
+    width: 70px;
+    font-weight: 700;
+    line-height: 50px;
+}
+
+.en {
+    color: var(--gold);
+}
+
+.ru {
+    color: var(--white);
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0;
+}
+
+.hero {
+    position: relative;
+    background-image: url('assets/img/header-bg.jpg');
+    background-position: center -90px;
+    background-repeat: no-repeat;
+    height: 910px;
+}
+
+.hero-container {
+    position: absolute;
+    top: 112px;
+    left: 80px;
+    width: 500px;
+    padding: 20px 0;
+}
+
+.hero-title {
+    font: normal var(--font1) 'Merriweather', serif;
+    margin-bottom: 32px;
+}
+
+.hero-text {
+    margin: 0;
+    padding-right: 20px;
+    line-height: 40px;
+}
+
+.button-gold {
+    background-color: var(--gold);
+    border: 0;
+    width: 220px;
+    height: 55px;
+    margin-top: 27px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: var(--font3);
+    font-weight: 400;
 }
 
 .section-title {
@@ -89,9 +157,4 @@ body {
     font-family: 'Merriweather', serif;
     font-size: var(--font2);
     color: var(--gold);
-}
-
-.main,
-.footer {
-    border: 2px solid red;
 }
