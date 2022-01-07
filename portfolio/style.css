@@ -268,3 +268,11 @@ body {
     justify-content: center;
     gap: 5px;
 }
+
+.portfolio-images {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-top: 60px;
+}
