@@ -139,6 +139,7 @@ body {
     margin: 0;
     padding-right: 20px;
     line-height: 40px;
+    margin-bottom: 25px;
 }
 
 .button-gold {
@@ -146,9 +147,20 @@ body {
     border: 0;
     width: 220px;
     height: 55px;
-    margin-top: 25px;
     cursor: pointer;
     font-family: inherit;
+    font-size: var(--font3);
+    font-weight: 400;
+}
+
+.button-transparent {
+    background-color: var(--bg-dark);
+    border: 2px solid var(--gold);
+    width: 220px;
+    height: 55px;
+    cursor: pointer;
+    font-family: inherit;
+    color: var(--gold);
     font-size: var(--font3);
     font-weight: 400;
 }
@@ -159,7 +171,8 @@ body {
 
 }
 
-.skills-container {
+.skills-container,
+.portfolio-container {
     background: var(--bg-dark);
 }
 
@@ -203,6 +216,7 @@ body {
 .skills {
     display: flex;
     justify-content: space-between;
+    padding: 0 20px;
     align-items: stretch;
     flex-wrap: wrap;
 }
@@ -210,6 +224,7 @@ body {
 .skill-item {
     background-position: top center;
     background-repeat: no-repeat;
+    width: 21%;
 }
 
 .skill-item:nth-child(1) {
@@ -217,9 +232,39 @@ body {
     background-size: 62px 50px;
 }
 
+.skill-item:nth-child(2) {
+    background-image: url('assets/svg/video.svg');
+    background-size: 62px 50px;
+}
+
+.skill-item:nth-child(3) {
+    background-image: url('assets/svg/image.svg');
+    background-size: 66px 50px;
+}
+
+.skill-item:nth-child(4) {
+    background-image: url('assets/svg/mic.svg');
+    background-size: 62px 50px;
+    padding-left: 8px;
+    padding-right: 3px;
+}
+
 .skill-title {
     text-align: center;
     margin-top: 100px;
-    font-weight: 700;
     line-height: 40px;
+    font-weight: 700;
+}
+
+.skill-text {
+    text-align: center;
+    font-size: 18px;
+    line-height: 36px;
+    margin-bottom: 10px;
+}
+
+.portfolio-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
 }
