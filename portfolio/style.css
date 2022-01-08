@@ -29,12 +29,11 @@ html {
 body {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    min-height: 100vh;
     margin: 0;
     padding: 0;
     font: normal var(--font3) 'Inter', sans-serif;
     color: var(--white);
+    background: var(--bg-dark);
 }
 
 .container {
@@ -71,19 +70,18 @@ body {
 
 .nav {
     margin-left: auto;
-    padding: 0 18px;
+    padding: 0 30px;
 }
 
 
 .nav-list {
     display: flex;
-    justify-content: flex-end;
     align-items: center;
     list-style: none;
+    gap: 31px;
 }
 
 .nav-link {
-    padding: 0 15px;
     color: var(--white);
     line-height: 50px;
     transition: .3s;
@@ -168,7 +166,6 @@ body {
 .section {
     margin: 0;
     padding: 0 20px;
-
 }
 
 .skills-container,
@@ -219,6 +216,7 @@ body {
     padding: 0 20px;
     align-items: stretch;
     flex-wrap: wrap;
+    gap: 20px;
 }
 
 .skill-item {
@@ -275,4 +273,23 @@ body {
     flex-wrap: wrap;
     gap: 20px;
     padding-top: 60px;
+}
+
+.video-container {
+    margin-top: -6px;
+}
+
+.video-player {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-player-button {
+    position: absolute;
+    background-image: url('assets/svg/Play_hover.svg');
+    background-repeat: no-repeat;
+    height: 130px;
+    width: 130px;
 }
