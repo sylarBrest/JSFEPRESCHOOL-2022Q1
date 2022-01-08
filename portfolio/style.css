@@ -1,14 +1,3 @@
-@font-face {
-    font-family: 'Merriweather';
-    src: url("assets/fonts/Merriweather-Bold.ttf");
-    font-weight: 700;
-}
-
-@font-face {
-    font-family: 'Inter';
-    src: url("assets/fonts/Inter-VariableFont_slnt\,wght.ttf");
-}
-
 :root {
     --gold: #bdae82;
     --bg-dark: #000000;
@@ -31,15 +20,16 @@ body {
     flex-direction: column;
     margin: 0;
     padding: 0;
-    font: normal var(--font3) 'Inter', sans-serif;
+    font: normal normal var(--font3) 'Inter', sans-serif;
     color: var(--white);
-    background: var(--bg-dark);
+    /*background: var(--bg-dark);*/
+    font-optical-sizing: none;
 }
 
 .container {
     width: 1440px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 18px 0 20px;
 }
 
 .header {
@@ -53,6 +43,7 @@ body {
     color: var(--white);
     align-items: center;
     font-size: var(--font3);
+    gap: 32px;
 }
 
 .logo {
@@ -70,9 +61,7 @@ body {
 
 .nav {
     margin-left: auto;
-    padding: 0 30px;
 }
-
 
 .nav-list {
     display: flex;
@@ -88,12 +77,15 @@ body {
     text-decoration: none;
 }
 
+.nav-link:hover {
+    color: var(--gold);
+}
+
 .switch-lng {
     display: flex;
-    justify-content: space-between;
-    width: 70px;
-    font-weight: 700;
+    gap: 10px;
     line-height: 50px;
+    font-weight: 700;
 }
 
 .en {
@@ -112,7 +104,7 @@ body {
     padding: 0;
 }
 
-.hero {
+.hero-container {
     position: relative;
     background-image: url('assets/img/header-bg.jpg');
     background-position: center -90px;
@@ -120,7 +112,7 @@ body {
     height: 820px;
 }
 
-.hero-container {
+.hero {
     position: absolute;
     top: 112px;
     left: 80px;
@@ -129,7 +121,7 @@ body {
 }
 
 .hero-title {
-    font: normal var(--font1) 'Merriweather', serif;
+    font: normal 700 var(--font1) 'Merriweather', serif;
     margin-bottom: 33px;
 }
 
@@ -151,6 +143,10 @@ body {
     font-weight: 400;
 }
 
+.button-gold:hover {
+    color: var(--white);
+}
+
 .button-transparent {
     background-color: var(--bg-dark);
     border: 2px solid var(--gold);
@@ -163,13 +159,19 @@ body {
     font-weight: 400;
 }
 
+.button-transparent:hover {
+    color: var(--white);
+}
+
 .section {
     margin: 0;
     padding: 0 20px;
 }
 
 .skills-container,
-.portfolio-container {
+.portfolio-container,
+.video-container,
+.price-container {
     background: var(--bg-dark);
 }
 
@@ -292,4 +294,48 @@ body {
     background-repeat: no-repeat;
     height: 130px;
     width: 130px;
+}
+
+.price-items {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    padding-bottom: 100px;
+}
+
+
+.price-item {
+    border: 3px solid var(--gold);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 0;
+}
+
+.price-item-title {
+    font: normal 700 28px/56px 'Merriweather', serif;
+    padding-bottom: 21px;
+    margin: 0;
+}
+
+.price-item-dollars {
+    font: normal 700 24px/48px 'Merriweather', serif;
+    color: var(--gold);
+    padding-bottom: 20px;
+    margin: 0;
+}
+
+.price-item-description {
+    font: normal normal 18px/36px 'Inter', sans-serif;
+    padding-bottom: 40px;
+}
+
+.price-item-description-line {
+    display: block;
+    text-align: center;
+}
+
+.price-item-button {
+    padding: 0 112px;
 }
