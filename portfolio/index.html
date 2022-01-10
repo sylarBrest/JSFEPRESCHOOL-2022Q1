@@ -40,7 +40,7 @@
                 <div class="container-title">
                     <h2 class="section-title">Skills</h2>
                 </div>
-                <div class="skills">
+                <div class="skill-items">
                     <div class="skill-item">
                         <p class="skill-title">Digital photography</p>
                         <p class="skill-text">High-quality photos in the studio and on the nature</p>
@@ -91,12 +91,12 @@
                 </div>
             </section>
             <section class="section video-container" id="video">
-                <div class="container-title">
+                <div class="container-title video-title">
                     <h2 class="section-title">Video</h2>
                 </div>
                 <div class="video-player">
                     <img class="video-player-image" src="assets/img/video-player.jpg" alt="Video player">
-                    <div class="video-player-button"></div>
+                    <button class="video-player-button"></button>
                 </div>
             </section>
             <section class="section price-container" id="price">
@@ -105,7 +105,7 @@
                 </div>
                 <div class="price-items">
                     <div class="price-item">
-                        <h3 class="price-item-title">Standart</h3>
+                        <h3 class="price-item-title">Standard</h3>
                         <p class="price-item-dollars">500 &#36;</p>
                         <div class="price-item-description">
                             <span class="price-item-description-line">One location</span>
@@ -136,10 +136,10 @@
                         <h3 class="price-item-title">Gold</h3>
                         <p class="price-item-dollars">1000 &#36;</p>
                         <div class="price-item-description">
-                            <span class="price-item-description-line">Tree locations or more</span>
+                            <span class="price-item-description-line">Three locations or more</span>
                             <span class="price-item-description-line">300 photos in color</span>
                             <span class="price-item-description-line">50 photos in retouch</span>
-                            <span class="price-item-description-line">Readiness 1 weeks</span>
+                            <span class="price-item-description-line">Readiness 1 week</span>
                             <span class="price-item-description-line">Make up, visage, hairstyle</span>
                         </div>
                         <div class="price-item-button">
@@ -149,13 +149,13 @@
                 </div>
             </section>
             <section class="section contacts-container" id="contacts">
-                <div class="contacts">
-                    <h2 class="section-title contacts-title">Contact me</h2>
+                <form class="contacts" action="#contacts">
+                    <h2 class="contacts-title">Contact me</h2>
                     <input class="email" type="email" name="email" id="email" placeholder="E-mail">
                     <input class="tel" type="tel" name="tel" id="tel" placeholder="Phone">
                     <textarea class="message" name="message" id="message" placeholder="Message"></textarea>
-                    <button class="button-gold">Send message</button>
-                </div>
+                    <button class="button-gold" onclick="event.preventDefault()">Send message</button>
+                </form>
             </section>
         </div>
     </main>
@@ -168,10 +168,12 @@
                 <span class="rss-link"><a class="footer-link" href="https://rs.school/js-stage0/">Rolling Scopes School</a></span>
             </div>
             <div class="social-list">
-                <div class="instagram"></div>
-                <div class="facebook"></div>
-                <div class="twitter"></div>
-                <div class="pinterest"></div>
+                <ul class="social-links">
+                    <li class="social-link"><a href="https://www.instagram.com" class="instagram" target="_blank"><div class="instagram"></div></a></li>
+                    <li class="social-link"><a href="https://www.facebook.com" class="facebook" target="_blank"><div class="facebook"></div></a></li>
+                    <li class="social-link"><a href="https://www.twitter.com" class="twitter" target="_blank"><div class="twitter"></div></a></li>
+                    <li class="social-link"><a href="https://www.pinterest.com" class="pinterest" target="_blank"><div class="pinterest"></div></a></li>
+                </ul>
             </div>
         </div>
     </footer>
