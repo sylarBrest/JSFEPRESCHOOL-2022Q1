@@ -102,7 +102,8 @@ body {
 .main-container {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    align-items: stretch;
+    gap: 100px;
     padding: 0;
 }
 
@@ -118,7 +119,7 @@ body {
     display: flex;
     flex-flow: column;
     width: 500px;
-    margin: 80px 0 0 80px;
+    margin: 160px 0 0 60px;
 }
 
 .hero-title {
@@ -156,7 +157,7 @@ body {
 }
 
 .section {
-    padding: 80px 20px 0;
+    padding: 0 20px;
 }
 
 .skills-container,
@@ -171,7 +172,6 @@ body {
 .container-title {
     width: 50%;
     text-align: center;
-    padding-top: 20px;
     margin: 0 auto;
 }
 
@@ -271,6 +271,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.video-player-image {
     max-width: 100%;
 }
 
@@ -295,7 +298,6 @@ body {
     justify-content: space-around;
     gap: 25px;
     flex-wrap: wrap;
-    padding-bottom: 100px;
 }
 
 .price-item {
@@ -336,62 +338,53 @@ body {
 
 .contacts-container {
     background-image: url('assets/img/contacts-bg.jpg');
-    background-size: auto auto;
-    background-position: center 0;
+    background-size: auto 700px;
+    background-position: center center;
     display: flex;
     justify-content: flex-end;
-    align-items: baseline;
     height: 700px;
 }
 
 .contacts {
     display: flex;
     flex-direction: column;
+    width: 450px;
     align-items: stretch;
     gap: 20px;
 }
 
 .contacts-title {
-    margin: 75px 0 35px 0;
-    text-align: left;
-    font-family: 'Merriweather', serif;
-    font-size: var(--font-h2);
+    padding: 60px 0 20px 0;
+    font: var(--font-h2);
     color: var(--color-gold);
 }
 
 .email,
 .tel {
-    padding-top: 2px;
+    padding: 2px 0 0 3px;
     background: rgba(0, 0, 0, 0.5);
-    font-family: inherit;
+    font: inherit;
     color: #bdae82;
     border: 2px solid var(--color-gold);
-    font-size: 20px;
-    line-height: 40px;
     height: 50px;
     transition: 0.5s;
-    padding-left: 3px;
     cursor: pointer;
     outline: 0;
 }
 
 ::placeholder {
-    font-family: inherit;
+    font: inherit;
     color: #bdae82;
-    font-size: 20px;
-    line-height: 40px;
     padding-left: 16px;
 }
 
 .message {
     background: rgba(0, 0, 0, 0.5);
     border: 2px solid var(--color-gold);
-    font-family: inherit;
+    padding: 2px 0 0 2px;
+    font: inherit;
     color: #bdae82;
-    font-size: 20px;
-    line-height: 40px;
     resize: none;
-    width: 450px;
     transition: 0.5s;
     height: 100px;
     margin-bottom: 10px;
@@ -409,14 +402,14 @@ body {
     background: var(--bg-dark);
     color: var(--color-white);
     align-items: center;
-    font-size: var(--font-h3);
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .footer-data {
     display: flex;
     gap: 21px;
     padding: 50px 0;
+    margin-right: auto;
 }
 
 .copyright,
@@ -437,7 +430,11 @@ body {
 }
 
 .rss-link {
-    padding-left: 59px;
+    padding-left: 20px;
+}
+
+.social-list {
+    margin-left: auto;
 }
 
 .social-links {
