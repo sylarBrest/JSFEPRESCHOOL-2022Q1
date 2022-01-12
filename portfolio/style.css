@@ -435,9 +435,6 @@ body {
 
 .social-list {
     margin-left: auto;
-}
-
-.social-links {
     display: flex;
     gap: 20px;
     list-style: none;
