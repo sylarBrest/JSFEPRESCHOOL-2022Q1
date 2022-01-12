@@ -1,14 +1,20 @@
 :root {
-    --gold: #bdae82;
+    --color-gold: #bdae82;
     --bg-dark: #000000;
-    --white: #ffffff;
-    --font1: 60px;
-    --font2: 40px;
-    --font3: 20px;
+    --color-white: #ffffff;
+    --font-h1: normal 700 60px/120px 'Merriweather', serif;
+    --font-h2: normal 700 40px/80px 'Merriweather', serif;
+    --font-h3-price: normal 700 28px/56px 'Merriweather', serif;
+    --font-h3-dollars: normal 700 24px/48px 'Merriweather', serif;
+    --font-h3-skills: normal 700 20px/40px 'Inter', sans-serif;
+    --font-elements: normal 400 20px/40px 'Inter', sans-serif;
+    --font-text: normal 700 18px/36px 'Inter', sans-serif;
 }
 
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 html {
@@ -18,17 +24,15 @@ html {
 body {
     display: flex;
     flex-direction: column;
-    margin: 0;
-    padding: 0;
-    font: normal normal var(--font3) 'Inter', sans-serif;
-    color: var(--white);
+    font: var(--font-elements);
+    color: var(--color-white);
     background: var(--bg-dark);
 }
 
 .container {
-    width: 1440px;
+    max-width: 1440px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 20px;    
 }
 
 .header {
@@ -39,10 +43,9 @@ body {
 
 .header-container {
     display: flex;
-    color: var(--white);
+    padding: 20px;
+    color: var(--color-white);
     align-items: center;
-    font-size: var(--font3);
-    gap: 32px;
 }
 
 .logo {
@@ -60,6 +63,7 @@ body {
 
 .nav {
     margin-left: auto;
+    padding-right: 30px;
 }
 
 .nav-list {
@@ -70,14 +74,14 @@ body {
 }
 
 .nav-link {
-    color: var(--white);
+    color: var(--color-white);
     line-height: 50px;
     transition: 0.5s;
     text-decoration: none;
 }
 
 .nav-link:hover {
-    color: var(--gold);
+    color: var(--color-gold);
 }
 
 .switch-lng {
@@ -88,23 +92,22 @@ body {
 }
 
 .en {
-    color: var(--gold);
+    color: var(--color-gold);
 }
 
 .ru {
-    color: var(--white);
+    color: var(--color-white);
 }
 
 .main-container {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: stretch;
     padding: 0;
 }
 
 .hero-container {
-    position: relative;
+    display: flex;
     background-image: url('assets/img/header-bg.jpg');
     background-position: center -90px;
     background-repeat: no-repeat;
@@ -112,86 +115,77 @@ body {
 }
 
 .hero {
-    position: absolute;
-    top: 112px;
-    left: 80px;
+    display: flex;
+    flex-flow: column;
     width: 500px;
-    padding: 20px 0;
+    margin: 80px 0 0 80px;
 }
 
 .hero-title {
-    font: normal 700 var(--font1) 'Merriweather', serif;
-    margin-bottom: 33px;
+    font: var(--font-h1);
 }
 
 .hero-text {
-    margin: 0;
-    padding-right: 20px;
-    line-height: 40px;
-    margin-bottom: 25px;
+    padding: 10px 20px 25px 0;
 }
 
 .button-gold {
-    background-color: var(--gold);
+    background-color: var(--color-gold);
     border: 0;
     width: 220px;
     height: 55px;
     cursor: pointer;
     transition: 0.5s;
-    font-family: inherit;
-    font-size: var(--font3);
-    font-weight: 400;
+    font: inherit;
 }
 
 .button-transparent {
     background-color: var(--bg-dark);
-    border: 2px solid var(--gold);
+    border: 2px solid var(--color-gold);
     width: 220px;
     height: 55px;
     cursor: pointer;
-    font-family: inherit;
+    font: inherit;
     transition: 0.5s;
-    color: var(--gold);
-    font-size: var(--font3);
-    font-weight: 400;
+    color: var(--color-gold);
 }
 
 .button-gold:hover,
 .button-transparent:hover {
-    color: var(--white);
+    color: var(--color-white);
 }
 
 .section {
-    margin: 0;
-    padding: 0 20px;
+    padding: 80px 20px 0;
 }
 
 .skills-container,
 .portfolio-container,
 .video-container,
 .price-container {
-    background: var(--bg-dark);
+    display: flex;
+    flex-flow: column wrap;
+    gap: 60px;
 }
 
 .container-title {
     width: 50%;
+    text-align: center;
+    padding-top: 20px;
     margin: 0 auto;
-    padding-top: 82px;
 }
 
 .section-title {
     display: flex;
     text-align: center;
-    font-family: 'Merriweather', serif;
-    font-size: var(--font2);
-    color: var(--gold);
-    margin-bottom: 75px;
+    font: var(--font-h2);
+    color: var(--color-gold);
 }
 
 .section-title::before,
 .section-title::after {
     content: "";
-    background: var(--gold);
+    background: var(--color-gold);
 	height: 2px;
     flex: 1;
     margin: auto;
@@ -204,10 +198,10 @@ body {
 .section-title::after {
     margin-left: 21px;
 }
+
 .skill-items {
     display: flex;
-    justify-content: space-between;
-    align-items: stretch;
+    justify-content: space-around;
     flex-wrap: wrap;
     gap: 40px;
 }
@@ -216,6 +210,10 @@ body {
     background-position: top center;
     background-repeat: no-repeat;
     width: 320px;
+    display: flex;
+    flex-flow: column;
+    gap: 20px;
+    padding-bottom: 10px;
 }
 
 .skill-item:nth-child(1) {
@@ -239,40 +237,33 @@ body {
 }
 
 .skill-title {
+    font: var(--font-h3-skills);
     text-align: center;
-    margin-top: 100px;
-    line-height: 40px;
-    font-weight: 700;
+    padding-top: 100px;
 }
 
 .skill-text {
     text-align: center;
-    font-size: 18px;
-    line-height: 36px;
+    font: var(--font-text);
     padding: 0 20px;
-    margin-bottom: 10px;
 }
 
 .portfolio-buttons {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 5px;
 }
 
 .portfolio-images {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
-    gap: 20px;
-    padding-top: 60px;
+    gap: 25px;
 }
 
-.video-container {
-    margin-top: -5px;
-}
-
-.video-title {
-    margin-top: -1px;
+.portfolio-img {
+    line-height: 0;
 }
 
 .video-player {
@@ -280,6 +271,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    max-width: 100%;
 }
 
 .video-player-button {
@@ -289,7 +281,7 @@ body {
     background-repeat: no-repeat;
     transition: 0.5s;
     border: 0;
-    color: var(--white);
+    color: var(--color-white);
     height: 130px;
     width: 130px;
 }
@@ -300,15 +292,14 @@ body {
 
 .price-items {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     gap: 25px;
     flex-wrap: wrap;
     padding-bottom: 100px;
 }
 
-
 .price-item {
-    border: 3px solid var(--gold);
+    border: 3px solid var(--color-gold);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -317,20 +308,20 @@ body {
 }
 
 .price-item-title {
-    font: normal 700 28px/56px 'Merriweather', serif;
-    padding-bottom: 21px;
-    margin: 0;
-}
-
-.price-item-dollars {
-    font: normal 700 24px/48px 'Merriweather', serif;
-    color: var(--gold);
+    font: var(--font-h3-price);
     padding-bottom: 20px;
     margin: 0;
 }
 
+.price-item-dollars {
+    font: var(--font-h3-dollars);
+    color: var(--color-gold);
+    padding-bottom: 21px;
+    margin: 0;
+}
+
 .price-item-description {
-    font: normal normal 18px/36px 'Inter', sans-serif;
+    font: var(--font-text);
     padding-bottom: 39px;
 }
 
@@ -364,8 +355,8 @@ body {
     margin: 75px 0 35px 0;
     text-align: left;
     font-family: 'Merriweather', serif;
-    font-size: var(--font2);
-    color: var(--gold);
+    font-size: var(--font-h2);
+    color: var(--color-gold);
 }
 
 .email,
@@ -374,7 +365,7 @@ body {
     background: rgba(0, 0, 0, 0.5);
     font-family: inherit;
     color: #bdae82;
-    border: 2px solid var(--gold);
+    border: 2px solid var(--color-gold);
     font-size: 20px;
     line-height: 40px;
     height: 50px;
@@ -394,7 +385,7 @@ body {
 
 .message {
     background: rgba(0, 0, 0, 0.5);
-    border: 2px solid var(--gold);
+    border: 2px solid var(--color-gold);
     font-family: inherit;
     color: #bdae82;
     font-size: 20px;
@@ -410,15 +401,15 @@ body {
 .email:focus,
 .tel:focus,
 .message:focus {
-    border: 2px solid var(--white);
+    border: 2px solid var(--color-white);
 }
 
 .footer-container {
     display: flex;
     background: var(--bg-dark);
-    color: var(--white);
+    color: var(--color-white);
     align-items: center;
-    font-size: var(--font3);
+    font-size: var(--font-h3);
     justify-content: space-between;
 }
 
@@ -436,13 +427,13 @@ body {
 
 .footer-link {
     line-height: 50px;
-    color: var(--white);
+    color: var(--color-white);
     transition: 0.5s;
     text-decoration: none;
 }
 
 .footer-link:hover {
-    color: var(--gold);
+    color: var(--color-gold);
 }
 
 .rss-link {
