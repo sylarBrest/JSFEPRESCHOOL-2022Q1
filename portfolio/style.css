@@ -8,7 +8,9 @@
     --font-h3-dollars: normal 700 24px/48px 'Merriweather', serif;
     --font-h3-skills: normal 700 20px/40px 'Inter', sans-serif;
     --font-elements: normal 400 20px/40px 'Inter', sans-serif;
-    --font-text: normal 700 18px/36px 'Inter', sans-serif;
+    --font-text-all: normal 400 20px/40px 'Inter', sans-serif;
+    --font-text-skills: normal 700 18px/36px 'Inter', sans-serif;
+    --font-text-price: normal 700 18px/36px 'Inter', sans-serif;
 }
 
 * {
@@ -55,6 +57,7 @@ body {
     transition: 0.5s;
     width: 50px;
     height: 50px;
+    margin-right: auto;
 }
 
 .logo:hover {
@@ -62,7 +65,6 @@ body {
 }
 
 .nav {
-    margin-left: auto;
     padding-right: 30px;
 }
 
@@ -99,6 +101,16 @@ body {
     color: var(--color-white);
 }
 
+.hamburger-menu {
+    display: none;
+    background-image: url('assets/svg/hamburger_unvisited.svg');
+    background-size: contain;
+    background-repeat: no-repeat;  
+    transition: 0.5s;
+    width: 50px;
+    height: 50px;
+}
+
 .main-container {
     display: flex;
     flex-direction: column;
@@ -111,6 +123,7 @@ body {
     display: flex;
     background-image: url('assets/img/header-bg.jpg');
     background-position: center -90px;
+    background-size: auto auto;
     background-repeat: no-repeat;
     height: 820px;
 }
@@ -127,6 +140,7 @@ body {
 }
 
 .hero-text {
+    font: var(--font-text-all);
     padding: 10px 20px 25px 0;
 }
 
@@ -244,7 +258,7 @@ body {
 
 .skill-text {
     text-align: center;
-    font: var(--font-text);
+    font: var(--font-text-skills);
     padding: 0 20px;
 }
 
@@ -253,6 +267,7 @@ body {
     justify-content: center;
     flex-wrap: wrap;
     gap: 5px;
+    padding: 0 31px;
 }
 
 .portfolio-images {
@@ -266,6 +281,10 @@ body {
     line-height: 0;
 }
 
+.image {
+    max-width: 100%;
+}
+
 .video-player {
     position: relative;
     display: flex;
@@ -274,7 +293,12 @@ body {
 }
 
 .video-player-image {
-    max-width: 100%;
+    width: 100%;
+}
+
+.video-player-image-768 {
+    display: none;
+    width: 100%;
 }
 
 .video-player-button {
@@ -307,6 +331,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 40px 0;
+    width: 450px;
 }
 
 .price-item-title {
@@ -323,7 +348,7 @@ body {
 }
 
 .price-item-description {
-    font: var(--font-text);
+    font: var(--font-text-price);
     padding-bottom: 39px;
 }
 
@@ -333,13 +358,13 @@ body {
 }
 
 .price-item-button {
-    padding: 0 112px;
+    align-self: center;
 }
 
 .contacts-container {
     background-image: url('assets/img/contacts-bg.jpg');
-    background-size: auto 700px;
-    background-position: center center;
+    background-size: auto auto;
+    background-position: 0 center;
     display: flex;
     justify-content: flex-end;
     height: 700px;
@@ -400,16 +425,16 @@ body {
 .footer-container {
     display: flex;
     background: var(--bg-dark);
+    font: var(--font-text-all);
     color: var(--color-white);
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .footer-data {
     display: flex;
     gap: 21px;
     padding: 50px 0;
-    margin-right: auto;
 }
 
 .copyright,
@@ -434,7 +459,6 @@ body {
 }
 
 .social-list {
-    margin-left: auto;
     display: flex;
     gap: 20px;
     list-style: none;
@@ -472,4 +496,167 @@ body {
 .twitter:hover,
 .pinterest:hover {
     filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%) contrast(87%);
+}
+
+@media (max-width: 768px) {
+    :root {
+        --font-h1: normal 400 32px/64px 'Merriweather', serif;
+        --font-h2: normal 700 32px/40.22px 'Merriweather', serif;
+        --font-h3-skills: normal 700 20px/40px 'Inter', sans-serif;
+        --font-text-all: normal 400 20px/24.2px 'Inter', sans-serif;
+        --font-text-skills: normal 700 18px/21.78px 'Inter', sans-serif;
+    }
+
+    .header {
+        background: url('assets/img/header-bg-small.jpg');
+        background-repeat: no-repeat;
+        background-position: center 0;
+    }
+    
+    .header-container {
+        padding: 20px 60px;
+    }
+
+    .nav {
+        display: none;
+    }
+
+    .switch-lng {
+        padding-right: 30px;
+    }
+
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .hero-container {
+        background-image: url('assets/img/header-bg-small.jpg');
+        height: 590px;
+    }
+
+    .hero {
+        width: 420px;
+        margin: 78px 0 0 40px;
+    }
+
+    .hero-text {
+        padding: 20px 0 59px 0;
+    }
+
+    .main-container {
+        gap: 10px;
+    }
+
+    .skills-container {
+        gap: 65px;
+    }
+
+    .skill-items {
+        justify-content: center;
+        row-gap: 65px;
+    }
+
+    .skill-item {
+        width: 300px;
+    }
+
+    .skill-title {
+        padding-top: 80px;
+    }
+
+    .skill-text {
+        padding: 0 10px;
+    }
+    
+    .portfolio-container {
+        padding-top: 160px;
+    }
+
+    .portfolio-buttons {
+        padding-top: 10px;
+    }
+
+    .video-container {
+        padding: 90px 0;
+    }
+
+    .video-player {
+        padding-top: 10px;
+    }
+
+    .video-player-image {
+        display: none;
+    }
+    
+    .video-player-image-768 {
+        display: block;
+    }
+
+    .video-player-button {
+        background-image: url('assets/svg/play-btn.svg');
+        width: 75px;
+        height: 75px;
+    }
+
+    .price-items {
+        padding-top: 10px;
+        gap: 50px;
+    }
+
+    .price-item {
+        width: 420px;
+    }
+
+    .contacts-container {
+        padding-top: 80px;
+        background-image: url('assets/img/contacts-bg-small.jpg');
+        background-position: center 70px;
+        background-repeat: no-repeat;
+        justify-content: center;
+        height: 680px;
+    }
+
+    .contacts-title {
+        text-align: center;
+        padding-bottom: 35px;
+    }
+
+    .submit {
+        align-self: center;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        padding: 30px;
+        gap: 30px;
+    }
+
+    .footer-data {
+        padding: 0;
+    }
+
+    .copyright,
+    .year,
+    .github,
+    .footer-link {
+        line-height: 0;
+    }
+
+    .rss-link {
+        padding: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .price-item {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 340px) {
+        .skill-item {
+            width: 100%;
+        }
+    
 }
