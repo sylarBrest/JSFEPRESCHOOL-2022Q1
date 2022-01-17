@@ -101,14 +101,10 @@ body {
     color: var(--color-white);
 }
 
-.hamburger-menu {
+.hamburger {
     display: none;
-    background-image: url('assets/svg/hamburger_unvisited.svg');
-    background-size: contain;
-    background-repeat: no-repeat;  
-    transition: 0.5s;
     width: 50px;
-    height: 50px;
+    height: 51px;
 }
 
 .main-container {
@@ -525,10 +521,40 @@ body {
         padding-right: 30px;
     }
 
-    .hamburger-menu {
+    .hamburger {
         display: flex;
+        flex-flow: column;
     }
 
+    .line {
+        width: 50px;
+        height: 3px;
+        background-color: var(--color-white);
+        display: block;
+        margin: auto auto;
+        transition: all 0.5s ease-in-out;
+    }
+      
+    .hamburger:hover {
+        cursor: pointer;
+    }
+    
+    .hamburger.is-active .line:nth-child(2){
+        opacity: 0;
+    }
+      
+    .hamburger.is-active .line:nth-child(1){
+        transform: translate(-9px, 17px) rotate(45deg);
+        width: 69px;
+        height: 2px;
+    }
+      
+    .hamburger.is-active .line:nth-child(3){
+        transform: translate(-9px, -17px) rotate(-45deg);
+        width: 69px;
+        height: 2px;
+    }
+     
     .hero-container {
         background-image: url('assets/img/header-bg-small.jpg');
         height: 590px;
@@ -651,12 +677,14 @@ body {
     .price-item {
         width: 100%;
     }
-
 }
 
 @media (max-width: 340px) {
-        .skill-item {
-            width: 100%;
-        }
-    
+    .switch-lng {
+        padding-right: 0;
+    }
+
+    .skill-item {
+        width: 100%;
+    }
 }
