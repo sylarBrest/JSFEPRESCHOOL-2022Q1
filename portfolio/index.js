@@ -38,8 +38,13 @@ let requirements = `Итоговая оценка: 110/110.
 console.log(requirements);
 
 const hamburger = document.querySelector('.hamburger');
+const nav = document.querySelector('nav');
+const body = document.querySelector('body');
+
 
 function toggleMenu() {
   hamburger.classList.toggle('is-active');
+  nav.classList.toggle('is-active');
+  body.classList.toggle('is-active');
 }
 hamburger.addEventListener('click', toggleMenu);
