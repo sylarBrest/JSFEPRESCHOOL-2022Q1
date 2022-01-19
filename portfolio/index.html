@@ -25,6 +25,12 @@
                 </ul>
             </nav>
             <div class="switch-lng"><span class="en">en</span><span class="dash">/</span><span class="ru">ru</span></div>
+            <div class="hamburger">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </div>
+            <div class="darken"></div>
         </div>
     </header>
     <main class="main">
@@ -42,19 +48,19 @@
                 </div>
                 <div class="skill-items">
                     <div class="skill-item">
-                        <p class="skill-title">Digital photography</p>
+                        <h3 class="skill-title">Digital photography</h3>
                         <p class="skill-text">High-quality photos in the studio and on the nature</p>
                     </div>
                     <div class="skill-item">
-                        <p class="skill-title">Video shooting</p>
+                        <h3 class="skill-title">Video shooting</h3>
                         <p class="skill-text">Capture your moments so that they always stay with you</p>
                     </div>
                     <div class="skill-item">
-                        <p class="skill-title">Retouch</p>
+                        <h3 class="skill-title">Retouch</h3>
                         <p class="skill-text">I strive to make photography surpass reality</p>
                     </div>
                     <div class="skill-item">
-                        <p class="skill-title">Audio</p>
+                        <h3 class="skill-title">Audio</h3>
                         <p class="skill-text">Professional sounds recording for video, advertising, portfolio</p>
                     </div>
                 </div>
@@ -71,22 +77,22 @@
                 </div>
                 <div class="portfolio-images">
                     <div class="portfolio-img">
-                        <img src="assets/img/portfolio-img-1.jpg" alt="Portfolio-img-1">
+                        <img class="image" src="assets/img/portfolio-img-1.jpg" alt="Portfolio-img-1">
                     </div>
                     <div class="portfolio-img">
-                        <img src="assets/img/portfolio-img-2.jpg" alt="Portfolio-img-2">
+                        <img class="image" src="assets/img/portfolio-img-2.jpg" alt="Portfolio-img-2">
                     </div>
                     <div class="portfolio-img">
-                        <img src="assets/img/portfolio-img-3.jpg" alt="Portfolio-img-3">
+                        <img class="image" src="assets/img/portfolio-img-3.jpg" alt="Portfolio-img-3">
                     </div>
                     <div class="portfolio-img">
-                        <img src="assets/img/portfolio-img-4.jpg" alt="Portfolio-img-4">
+                        <img class="image" src="assets/img/portfolio-img-4.jpg" alt="Portfolio-img-4">
                     </div>
                     <div class="portfolio-img">
-                        <img src="assets/img/portfolio-img-5.jpg" alt="Portfolio-img-5">
+                        <img class="image" src="assets/img/portfolio-img-5.jpg" alt="Portfolio-img-5">
                     </div>
                     <div class="portfolio-img">
-                        <img src="assets/img/portfolio-img-6.jpg" alt="Portfolio-img-6">
+                        <img class="image" src="assets/img/portfolio-img-6.jpg" alt="Portfolio-img-6">
                     </div>
                 </div>
             </section>
@@ -96,6 +102,7 @@
                 </div>
                 <div class="video-player">
                     <img class="video-player-image" src="assets/img/video-player.jpg" alt="Video player">
+                    <img class="video-player-image-768" src="assets/img/video-player-small.jpg" alt="Video player 768">
                     <button class="video-player-button"></button>
                 </div>
             </section>
@@ -154,7 +161,7 @@
                     <input class="email" type="email" name="email" id="email" placeholder="E-mail">
                     <input class="tel" type="tel" name="tel" id="tel" placeholder="Phone">
                     <textarea class="message" name="message" id="message" placeholder="Message"></textarea>
-                    <button class="button-gold" onclick="event.preventDefault()">Send message</button>
+                    <button class="button-gold submit" onclick="event.preventDefault()">Send message</button>
                 </form>
             </section>
         </div>
@@ -167,14 +174,12 @@
             <div class="rss">
                 <span class="rss-link"><a class="footer-link" href="https://rs.school/js-stage0/">Rolling Scopes School</a></span>
             </div>
-            <div class="social-list">
-                <ul class="social-links">
-                    <li class="social-link"><a href="https://www.instagram.com" class="instagram" target="_blank"><div class="instagram"></div></a></li>
-                    <li class="social-link"><a href="https://www.facebook.com" class="facebook" target="_blank"><div class="facebook"></div></a></li>
-                    <li class="social-link"><a href="https://www.twitter.com" class="twitter" target="_blank"><div class="twitter"></div></a></li>
-                    <li class="social-link"><a href="https://www.pinterest.com" class="pinterest" target="_blank"><div class="pinterest"></div></a></li>
-                </ul>
-            </div>
+            <ul class="social-list">
+                <li class="social-link"><a href="https://www.instagram.com" class="instagram" target="_blank"><div class="instagram"></div></a></li>
+                <li class="social-link"><a href="https://www.facebook.com" class="facebook" target="_blank"><div class="facebook"></div></a></li>
+                <li class="social-link"><a href="https://www.twitter.com" class="twitter" target="_blank"><div class="twitter"></div></a></li>
+                <li class="social-link"><a href="https://www.pinterest.com" class="pinterest" target="_blank"><div class="pinterest"></div></a></li>
+            </ul>
         </div>
     </footer>
     <script src="index.js"></script>
