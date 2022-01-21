@@ -7,7 +7,7 @@ const i18Obj = {
     'contacts': 'Contacts',
     'hero-title': 'Alexa Rise',
     'hero-text': 'Save sincere emotions, romantic feelings and happy moments of life together with professional photographer Alexa Rise',
-    'hire': 'Hire me',
+    'hire-me': 'Hire me',
     'skill-title-1': 'Digital photography',
     'skill-text-1': 'High-quality photos in the studio and on the nature',
     'skill-title-2': 'Video shooting',
@@ -35,8 +35,10 @@ const i18Obj = {
     'price-description-3-span-3': '50 photos in retouch',
     'price-description-3-span-4': 'Readiness 1 week',
     'price-description-3-span-5': 'Make up, visage, hairstyle',
-    'order': 'Order shooting',
+    'order-shooting': 'Order shooting',
     'contact-me': 'Contact me',
+    'phone': 'Phone',
+    'message': 'Message',
     'send-message': 'Send message'
   },
   'ru': {
@@ -47,7 +49,7 @@ const i18Obj = {
     'contacts': 'Контакты',
     'hero-title': 'Алекса Райс',
     'hero-text': 'Сохраните искренние эмоции, романтические переживания и счастливые моменты жизни вместе с профессиональным фотографом',
-    'hire': 'Пригласить',
+    'hire-me': 'Пригласить',
     'skill-title-1': 'Фотография',
     'skill-text-1': 'Высококачественные фото в студии и на природе',
     'skill-title-2': 'Видеосъемка',
@@ -75,8 +77,10 @@ const i18Obj = {
     'price-description-3-span-3': '50 отретушированных фото',
     'price-description-3-span-4': 'Готовность через 1 неделю',
     'price-description-3-span-5': 'Макияж, визаж, прическа',
-    'order': 'Заказать съемку',
+    'order-shooting': 'Заказать съемку',
     'contact-me': 'Свяжитесь со мной',
+    'phone': 'Телефон',
+    'message': 'Сообщение',
     'send-message': 'Отправить'
   }
 }

@@ -94,12 +94,21 @@ body {
     font-weight: 700;
 }
 
-.en {
+.en.active,
+.ru.active {
     color: var(--color-gold);
 }
 
+.en,
 .ru {
     color: var(--color-white);
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.en:hover,
+.ru:hover {
+    color: var(--color-gold);
 }
 
 .hamburger {

@@ -78,3 +78,19 @@ function preloadImages(season) {
     img.src = `assets/img/${season}/${i}.webp`;
   }
 }
+
+// Translate
+import i18Obj from './js/translate.js';
+
+function getTranslate(lang) {
+  const textToTranslate = document.querySelectorAll('[data-i18n]');
+  textToTranslate.forEach(el => el.textContent.i18Obj.lang[dataset.i18n]);
+}
+
+const languages = ['en', 'ru'];
+
+languages.addEventListener('click', () => {
+  if (document.querySelector('.ru') && !document.querySelector('.active')) {
+    getTranslate('ru');
+  }
+});
