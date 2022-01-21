@@ -38,7 +38,7 @@ body {
 }
 
 .header {
-    background: url('assets/img/header-bg.jpg');
+    background: url('assets/img/header-bg.webp');
     background-repeat: no-repeat;
     background-position: center 0;
 }
@@ -118,7 +118,7 @@ body {
 
 .hero-container {
     display: flex;
-    background-image: url('assets/img/header-bg.jpg');
+    background-image: url('assets/img/header-bg.webp');
     background-position: center -90px;
     background-size: auto auto;
     background-repeat: no-repeat;
@@ -151,7 +151,7 @@ body {
     font: inherit;
 }
 
-.button-transparent {
+.portfolio-button {
     background-color: var(--bg-dark);
     border: 2px solid var(--color-gold);
     width: 220px;
@@ -162,8 +162,14 @@ body {
     color: var(--color-gold);
 }
 
+.portfolio-button.active {
+    background-color: var(--color-gold);
+    border: 0;
+    color: var(--bg-dark);
+}
+
 .button-gold:hover,
-.button-transparent:hover {
+.portfolio-button:hover {
     color: var(--color-white);
 }
 
@@ -356,7 +362,7 @@ body {
 }
 
 .contacts-container {
-    background-image: url('assets/img/contacts-bg.jpg');
+    background-image: url('assets/img/contacts-bg.webp');
     background-size: auto auto;
     background-position: 0 center;
     display: flex;
@@ -457,6 +463,10 @@ body {
     list-style: none;
 }
 
+.invisible {
+    display: none;
+}
+
 .instagram {
     background-image: url('assets/svg/instagram.svg');
 }
@@ -502,7 +512,7 @@ body {
     }
 
     .header {
-        background: url('assets/img/header-bg-small.jpg');
+        background: url('assets/img/header-bg-small.webp');
         background-repeat: no-repeat;
         background-position: center 0;
     }
@@ -605,7 +615,7 @@ body {
     }
      
     .hero-container {
-        background-image: url('assets/img/header-bg-small.jpg');
+        background-image: url('assets/img/header-bg-small.webp');
         height: 590px;
     }
 
@@ -684,7 +694,7 @@ body {
 
     .contacts-container {
         padding-top: 80px;
-        background-image: url('assets/img/contacts-bg-small.jpg');
+        background-image: url('assets/img/contacts-bg-small.webp');
         background-position: center 70px;
         background-repeat: no-repeat;
         justify-content: center;

@@ -53,11 +53,19 @@ const portfolioButtons = document.querySelector('.portfolio-buttons');
 
 function changeImage(event) {
   if(event.target.classList.contains('portfolio-button')) {
-    portfolioImages.forEach((img, index) => img.src = `assets/img/${event.target.dataset.season}/${index + 1}.jpg`);
+    portfolioImages.forEach((img, index) => img.src = `assets/img/${event.target.dataset.season}/${index + 1}.webp`);
   }
 }
 
 portfolioButtons.addEventListener('click', changeImage);
+portfolioButtons.addEventListener('click', changeButtonColor);
+const portfolioButton = document.querySelectorAll('.portfolio-button');
+
+function changeButtonColor(event) {
+  portfolioButton.forEach(el => el.classList.remove('active'));
+  event.target.classList.add('active');
+}
+
 
 // Caching images
 const seasons = ['winter', 'spring', 'summer', 'autumn'];
@@ -67,6 +75,6 @@ seasons.forEach(el => preloadImages(el));
 function preloadImages(season) {
   for(let i = 1; i <= 6; i++) {
     const img = new Image();
-    img.src = `assets/img/${season}/${i}.jpg`;
+    img.src = `assets/img/${season}/${i}.webp`;
   }
 }
