@@ -1,3 +1,4 @@
+// Self-check
 let requirements = `Итоговая оценка: 85/85.
 1. Вёрстка соответствует макету. Ширина экрана 768px +48
   + блок <header> +6
@@ -24,7 +25,7 @@ let requirements = `Итоговая оценка: 85/85.
 
 console.log(requirements);
 
-/*Hamburger menu*/
+// Hamburger menu
 const hamburger = document.querySelector('.hamburger');
 const nav = document.querySelector('nav');
 const body = document.querySelector('body');
@@ -43,5 +44,29 @@ function closeMenu(event) {
     hamburger.classList.remove('is-active');
     nav.classList.remove('is-active');
     body.classList.remove('is-active');
+  }
+}
+
+// Portfolio buttons and images
+const portfolioImages = document.querySelectorAll('.portfolio-img');
+const portfolioButtons = document.querySelector('.portfolio-buttons');
+
+function changeImage(event) {
+  if(event.target.classList.contains('portfolio-button')) {
+    portfolioImages.forEach((img, index) => img.src = `assets/img/${event.target.dataset.season}/${index + 1}.jpg`);
+  }
+}
+
+portfolioButtons.addEventListener('click', changeImage);
+
+// Caching images
+const seasons = ['winter', 'spring', 'summer', 'autumn'];
+
+seasons.forEach(el => preloadImages(el));
+
+function preloadImages(season) {
+  for(let i = 1; i <= 6; i++) {
+    const img = new Image();
+    img.src = `assets/img/${season}/${i}.jpg`;
   }
 }
