@@ -1,26 +1,21 @@
 // Self-check
-let requirements = `Итоговая оценка: 85/85.
-1. Вёрстка соответствует макету. Ширина экрана 768px +48
-  + блок <header> +6
-  + секция hero +6
-  + секция skills +6
-  + секция portfolio +6
-  + секция video +6
-  + секция price +6
-  + секция contacts +6
-  + блок <footer> +6
-2. Ни на одном из разрешений до 320px включительно не появляется горизонтальная полоса прокрутки +15
-  + нет полосы прокрутки при ширине страницы от 1440рх до 768рх +5
-  + нет полосы прокрутки при ширине страницы от 768рх до 480рх +5
-  + нет полосы прокрутки при ширине страницы от 480рх до 320рх +5
-3. На ширине экрана 768рх и меньше реализовано адаптивное меню +22
-  + при ширине страницы 768рх панель навигации скрывается, появляется бургер-иконка +2
-  + при нажатии на бургер-иконку справа плавно появляется адаптивное меню, бургер-иконка изменяется на крестик +4
-  + высота адаптивного меню занимает всю высоту экрана. При ширине экрана 768-620рх вёрстка меню соответствует макету, когда экран становится уже, меню занимает всю ширину экрана +4
-  + при нажатии на крестик адаптивное меню плавно скрывается уезжая за правую часть экрана, крестик превращается в бургер-иконку +4
-  + бургер-иконка, которая при клике превращается в крестик, создана при помощи css-анимаций без использования изображений +2
-  + ссылки в адаптивном меню работают, обеспечивая плавную прокрутку по якорям +2
-  + при клике по ссылке в адаптивном меню адаптивное меню плавно скрывается, крестик превращается в бургер-иконку +4
+let requirements = `Итоговая оценка: 50/85.
+1. Смена изображений в секции portfolio +25
+Изображения разных времён года получаем из папок с соответствующими названиями
+Изображения заменены на другие с целью улучшения качества созданного приложения
+  - при кликах по кнопкам Winter, Spring, Summer, Autumn в секции portfolio отображаются изображения из папки с соответствующим названием +20
+  - кнопка, по которой кликнули, становится активной т.е. выделяется стилем. Другие кнопки при этом будут неактивными +5
+2. Перевод страницы на два языка +25
+Для перевода используется файл translate.js
+  - при клике по надписи ru англоязычная страница переводится на русский язык +10
+  - при клике по надписи en русскоязычная страница переводится на английский язык +10
+  - надписи en или ru, соответствующие текущему языку страницы, становятся активными т.е. выделяются стилем +5
+3. Переключение светлой и тёмной темы +25
+Внешний вид тёмной темы соответствует макету, который верстали в предыдущих частях задания, внешний вид светлой темы соответствует следующему варианту макета - блоки и секции header, hero, contacts, footer остались без изменений, в оставшихся секциях цвет фона и шрифта поменялись местами: фон стал белым, шрифт черным.
+На страницу добавлен переключатель при клике по которому:
+  - тёмная тема приложения сменяется светлой +10
+  - светлая тема приложения сменяется тёмной +10
+  - после смены светлой и тёмной темы интерактивные элементы по-прежнему изменяют внешний вид при наведении и клике и при этом остаются видимыми на странице (нет ситуации с белым шрифтом на белом фоне) +5
 `;
 
 console.log(requirements);
@@ -82,15 +77,50 @@ function preloadImages(season) {
 // Translate
 import i18Obj from './js/translate.js';
 
-function getTranslate(lang) {
+function getTranslate(event) {
   const textToTranslate = document.querySelectorAll('[data-i18n]');
-  textToTranslate.forEach(el => el.textContent.i18Obj.lang[dataset.i18n]);
+  const placeholderTranslate = document.querySelectorAll('[data-form]');
+
+  if (event.target.classList.contains('ru')) {
+    textToTranslate.forEach(el => el.textContent = i18Obj['ru'][el.dataset.i18n]);
+    placeholderTranslate.forEach(el => el.placeholder = i18ObjForm['ru'][el.dataset.form]);
+  }
+  if (event.target.classList.contains('en')) {
+    textToTranslate.forEach(el => el.textContent = i18Obj['en'][el.dataset.i18n]);
+    placeholderTranslate.forEach(el => el.placeholder = i18ObjForm['en'][el.dataset.form]);
+  }
 }
 
-const languages = ['en', 'ru'];
+const languages = document.querySelector('.switch-lng');
 
-languages.addEventListener('click', () => {
-  if (document.querySelector('.ru') && !document.querySelector('.active')) {
-    getTranslate('ru');
+languages.addEventListener('click', getTranslate);
+languages.addEventListener('click', changeLangColor);
+
+const lang = document.querySelectorAll('.lng');
+
+function changeLangColor(event) {
+  lang.forEach(el => el.classList.remove('active'));
+  event.target.classList.add('active');
+}
+
+const i18ObjForm = {
+  'en': {
+    'phone': 'Phone',
+    'message': 'Message',
+  },
+  'ru': {
+    'phone': 'Телефон',
+    'message': 'Сообщение',
   }
-});
+}
+
+// Theme change
+const themeChanger = document.querySelector('.theme-change');
+const themeChangeElements = document.querySelectorAll('.dark');
+
+themeChanger.addEventListener('click', changeTheme);
+
+function changeTheme(event) {
+  themeChangeElements.forEach(el => el.classList.toggle('light'));
+  event.target.classList.toggle('light');
+}

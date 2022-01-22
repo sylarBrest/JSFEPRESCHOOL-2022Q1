@@ -48,6 +48,7 @@ body {
     padding: 20px;
     color: var(--color-white);
     align-items: center;
+    gap: 30px;
 }
 
 .logo {
@@ -63,10 +64,6 @@ body {
 
 .logo:hover {
     filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%) contrast(87%);
-}
-
-.nav {
-    padding-right: 30px;
 }
 
 .nav-list {
@@ -115,6 +112,26 @@ body {
     display: none;
     width: 50px;
     height: 51px;
+    order: 5;
+}
+
+.darken {
+    display: none;
+}
+
+.theme-change {
+    background-image: url('assets/svg/sun.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    transition: 0.5s;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+}
+
+.theme-change:hover {
+    filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%) contrast(87%);
 }
 
 .main-container {
@@ -419,6 +436,7 @@ body {
     color: var(--color-gold);
     resize: none;
     transition: 0.5s;
+    cursor: pointer;
     height: 100px;
     margin-bottom: 10px;
     outline: 0;
@@ -510,6 +528,21 @@ body {
     filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%) contrast(87%);
 }
 
+.light {
+    background: var(--color-white);
+    color: var(--bg-dark);
+}
+
+.theme-change.light {
+    background: none;
+    background-image: url('assets/svg/moon.svg');
+    background-repeat: no-repeat;
+}
+
+.light:hover {
+    color: var(--color-white);
+}
+
 @media (max-width: 768px) {
     :root {
         --font-h1: normal 400 32px/64px 'Merriweather', serif;
@@ -583,10 +616,6 @@ body {
         transition: all 0.5s;
     }
 
-    .switch-lng {
-        padding-right: 30px;
-    }
-
     .hamburger {
         display: flex;
         position: relative;
@@ -597,12 +626,12 @@ body {
     .line {
         width: 50px;
         height: 3px;
-        background-color: var(--color-white);
+        background: var(--color-white);
         display: block;
         margin: auto auto;
         transition: all 0.5s ease-in-out;
     }
-      
+
     .hamburger:hover {
         cursor: pointer;
     }

@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
     <title>portfolio</title>
 </head>
-<body>
+<body class="dark">
     <header class="header">
         <div class="container header-container">
             <div class="logo"></div>
@@ -25,13 +25,14 @@
                     <li class="nav-item"><a href="#contacts" class="nav-link" data-i18n="contacts">Contacts</a></li>
                 </ul>
             </nav>
-            <div class="switch-lng"><span class="en active">EN</span><span class="dash">/</span><span class="ru">RU</span></div>
+            <div class="switch-lng"><span class="lng en active">en</span><span class="dash">/</span><span class="lng ru">ru</span></div>
             <div class="hamburger">
                 <span class="line"></span>
                 <span class="line"></span>
                 <span class="line"></span>
             </div>
             <div class="darken"></div>
+            <div class="theme-change"></div>
         </div>
     </header>
     <main class="main">
@@ -43,9 +44,9 @@
                     <button class="button-gold" data-i18n="hire-me">Hire me</button>
                 </div>
             </section>
-            <section class="section skills-container" id="skills">
-                <div class="container-title">
-                    <h2 class="section-title" data-i18n="skills">Skills</h2>
+            <section class="section skills-container dark" id="skills">
+                <div class="container-title dark">
+                    <h2 class="section-title dark" data-i18n="skills">Skills</h2>
                 </div>
                 <div class="skill-items">
                     <div class="skill-item">
@@ -66,9 +67,9 @@
                     </div>
                 </div>
             </section>
-            <section class="section portfolio-container" id="portfolio">
+            <section class="section portfolio-container dark" id="portfolio">
                 <div class="container-title">
-                    <h2 class="section-title" data-i18n="portfolio">Portfolio</h2>
+                    <h2 class="section-title dark" data-i18n="portfolio">Portfolio</h2>
                 </div>
                 <div class="portfolio-buttons">
                     <button class="portfolio-button" data-season="winter" data-i18n="winter">Winter</button>
@@ -87,7 +88,7 @@
             </section>
             <section class="section video-container" id="video">
                 <div class="container-title video-title">
-                    <h2 class="section-title" data-i18n="video">Video</h2>
+                    <h2 class="section-title dark" data-i18n="video">Video</h2>
                 </div>
                 <div class="video-player">
                     <img class="video-player-image" src="assets/img/video-player.webp" alt="Video player">
@@ -97,7 +98,7 @@
             </section>
             <section class="section price-container" id="price">
                 <div class="container-title">
-                    <h2 class="section-title" data-i18n="price">Price</h2>
+                    <h2 class="section-title dark" data-i18n="price">Price</h2>
                 </div>
                 <div class="price-items">
                     <div class="price-item">
@@ -147,9 +148,9 @@
             <section class="section contacts-container" id="contacts">
                 <form class="contacts" action="#contacts">
                     <h2 class="contacts-title" data-i18n="contact-me">Contact me</h2>
-                    <input class="email" type="email" name="email" id="email" placeholder="E-mail" data-i18n="e-mail">
-                    <input class="tel" type="tel" name="tel" id="tel" placeholder="Phone"  data-i18n="phone">
-                    <textarea class="message" name="message" id="message" placeholder="Message" data-i18n="message"></textarea>
+                    <input class="email" type="email" name="email" id="email" placeholder="E-mail">
+                    <input class="tel" type="tel" name="tel" id="tel" placeholder="Phone" data-form="phone">
+                    <textarea class="message" name="message" id="message" placeholder="Message" data-form="message"></textarea>
                     <button class="button-gold submit" onclick="event.preventDefault()" data-i18n="send-message">Send message</button>
                 </form>
             </section>
