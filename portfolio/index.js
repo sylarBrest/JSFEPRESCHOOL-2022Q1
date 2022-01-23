@@ -1,5 +1,5 @@
 // Self-check
-let requirements = `Итоговая оценка: 50/85.
+let requirements = `Итоговая оценка: 75/85.
 1. Смена изображений в секции portfolio +25
 Изображения разных времён года получаем из папок с соответствующими названиями
 Изображения заменены на другие с целью улучшения качества созданного приложения
@@ -24,11 +24,18 @@ console.log(requirements);
 const hamburger = document.querySelector('.hamburger');
 const nav = document.querySelector('nav');
 const body = document.querySelector('body');
+const section = document.querySelector('.skills-container');
+const title = document.querySelector('.section-title');
 
 function toggleMenu() {
   hamburger.classList.toggle('is-active');
   nav.classList.toggle('is-active');
   body.classList.toggle('is-active');
+  if (hamburger.classList.contains('light')) {
+    body.classList.toggle('light');
+    section.classList.toggle('light');
+    title.classList.toggle('light');
+  }
 }
 
 hamburger.addEventListener('click', toggleMenu);
@@ -39,6 +46,11 @@ function closeMenu(event) {
     hamburger.classList.remove('is-active');
     nav.classList.remove('is-active');
     body.classList.remove('is-active');
+    if (hamburger.classList.contains('light')) {
+      body.classList.toggle('light');
+      section.classList.toggle('light');
+      title.classList.toggle('light');
+    }
   }
 }
 
@@ -84,10 +96,12 @@ function getTranslate(event) {
   if (event.target.classList.contains('ru')) {
     textToTranslate.forEach(el => el.textContent = i18Obj['ru'][el.dataset.i18n]);
     placeholderTranslate.forEach(el => el.placeholder = i18ObjForm['ru'][el.dataset.form]);
+    lang = 'ru';
   }
   if (event.target.classList.contains('en')) {
     textToTranslate.forEach(el => el.textContent = i18Obj['en'][el.dataset.i18n]);
     placeholderTranslate.forEach(el => el.placeholder = i18ObjForm['en'][el.dataset.form]);
+    lang = 'en';
   }
 }
 
@@ -96,10 +110,10 @@ const languages = document.querySelector('.switch-lng');
 languages.addEventListener('click', getTranslate);
 languages.addEventListener('click', changeLangColor);
 
-const lang = document.querySelectorAll('.lng');
+const langs = document.querySelectorAll('.lng');
 
 function changeLangColor(event) {
-  lang.forEach(el => el.classList.remove('active'));
+  langs.forEach(el => el.classList.remove('active'));
   event.target.classList.add('active');
 }
 
@@ -117,10 +131,37 @@ const i18ObjForm = {
 // Theme change
 const themeChanger = document.querySelector('.theme-change');
 const themeChangeElements = document.querySelectorAll('.dark');
+const navLinks = document.querySelectorAll('.nav-link');
 
 themeChanger.addEventListener('click', changeTheme);
 
 function changeTheme(event) {
   themeChangeElements.forEach(el => el.classList.toggle('light'));
   event.target.classList.toggle('light');
+  nav.classList.toggle('light');
+  navLinks.forEach(el => el.classList.toggle('light'));
+  if (event.target.classList.contains('dark')) {
+    theme = 'dark'
+  }
+  if (event.target.classList.contains('light')) {
+    theme = 'light'
+  }
 }
+
+// Local storage
+let lang = 'en';
+let theme = 'dark';
+
+function setLocalStorage() {
+  localStorage.setItem('lang', lang);
+  localStorage.setItem('theme', theme);
+}
+window.addEventListener('beforeunload', setLocalStorage)
+
+function getLocalStorage() {
+  if(localStorage.getItem('lang')) {
+    const lang = localStorage.getItem('lang');
+
+  }
+}
+window.addEventListener('load', getLocalStorage)

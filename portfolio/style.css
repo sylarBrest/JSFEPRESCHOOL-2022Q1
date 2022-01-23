@@ -115,6 +115,17 @@ body {
     order: 5;
 }
 
+.nav.light {
+    background: none;
+}
+
+
+.nav-link.light {
+    color: var(--color-white);
+    background: none;
+}
+
+
 .darken {
     display: none;
 }
@@ -154,6 +165,7 @@ body {
 .hero {
     display: flex;
     flex-flow: column;
+    color: var(--color-white);
     width: 500px;
     margin: 160px 0 0 60px;
 }
@@ -168,7 +180,7 @@ body {
 }
 
 .button-gold {
-    background-color: var(--color-gold);
+    background: var(--color-gold);
     border: 0;
     width: 220px;
     height: 55px;
@@ -178,7 +190,7 @@ body {
 }
 
 .portfolio-button {
-    background-color: var(--bg-dark);
+    background: var(--bg-dark);
     border: 2px solid var(--color-gold);
     width: 220px;
     height: 55px;
@@ -188,14 +200,25 @@ body {
     color: var(--color-gold);
 }
 
+.portfolio-button.light {
+    background: var(--color-white);
+    color: var(--bg-dark);
+}
+
 .portfolio-button.active {
-    background-color: var(--color-gold);
+    background: var(--color-gold);
     border: 0;
     color: var(--bg-dark);
 }
 
+
 .button-gold:hover,
 .portfolio-button:hover {
+    color: var(--color-white);
+}
+
+.portfolio-button.light:hover {
+    background: var(--color-gold);
     color: var(--color-white);
 }
 
@@ -232,6 +255,11 @@ body {
 	height: 2px;
     flex: 1;
     margin: auto;
+}
+
+.section-title.light::before,
+.section-title.light::after {
+    background: var(--bg-dark);
 }
 
 .section-title::before {
@@ -539,7 +567,7 @@ body {
     background-repeat: no-repeat;
 }
 
-.light:hover {
+.button-gold.light:hover {
     color: var(--color-white);
 }
 
@@ -578,6 +606,10 @@ body {
         background-color: var(--bg-dark);
     }
 
+    .nav.light {
+        background: var(--color-white);
+    }
+
     .nav-list {
         flex-flow: column;
         font: var(--font-hamburger);
@@ -586,6 +618,14 @@ body {
         gap: 16px;
         padding-top: 135px;
         padding-left: 127px;
+    }
+
+    .nav-link.light {
+        color: var(--bg-dark);
+    }
+
+    .nav-link.light:hover {
+        color: var(--color-gold);
     }
 
     .nav.is-active {
@@ -652,6 +692,14 @@ body {
         height: 2px;
     }
      
+    .hamburger.is-active.light .line {
+        background: var(--bg-dark);
+    }
+
+    .hamburger.light {
+        background: none;
+    }
+
     .hero-container {
         background-image: url('assets/img/header-bg-small.webp');
         height: 590px;
@@ -736,7 +784,7 @@ body {
         background-position: center 70px;
         background-repeat: no-repeat;
         justify-content: center;
-        height: 680px;
+        height: 670px;
     }
 
     .contacts-title {
@@ -750,7 +798,7 @@ body {
 
     .footer-container {
         flex-direction: column;
-        padding: 30px;
+        padding: 37px;
         gap: 30px;
     }
 
