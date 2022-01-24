@@ -76,7 +76,7 @@ body {
 .nav-link {
     color: var(--color-white);
     line-height: 50px;
-    transition: 0.5s;
+    transition: color 0.5s;
     text-decoration: none;
 }
 
@@ -89,6 +89,7 @@ body {
     gap: 10px;
     line-height: 50px;
     font-weight: 700;
+    text-transform: uppercase;
 }
 
 .en.active,
@@ -134,10 +135,9 @@ body {
     background-image: url('assets/svg/sun.svg');
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center center;
     transition: 0.5s;
-    width: 45px;
-    height: 45px;
+    width: 41px;
+    height: 41px;
     cursor: pointer;
 }
 
@@ -825,12 +825,21 @@ body {
 }
 
 @media (max-width: 480px) {
+    .header-container {
+        padding: 20px;
+    }
+
     .price-item {
         width: 100%;
     }
 }
 
 @media (max-width: 340px) {
+
+    .header-container {
+        gap: 15px;
+    }
+
     .switch-lng {
         padding-right: 0;
     }

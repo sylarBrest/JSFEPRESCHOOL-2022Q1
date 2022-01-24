@@ -27,10 +27,23 @@ const body = document.querySelector('body');
 const section = document.querySelector('.skills-container');
 const title = document.querySelector('.section-title');
 
-function toggleMenu() {
+const toggleMenu = () => {
   hamburger.classList.toggle('is-active');
   nav.classList.toggle('is-active');
   body.classList.toggle('is-active');
+  lightToDark();
+}
+
+const closeMenu = (event) => {
+  if (event.target.classList.contains('nav-link')) {
+    hamburger.classList.remove('is-active');
+    nav.classList.remove('is-active');
+    body.classList.remove('is-active');
+    lightToDark();
+  }
+}
+
+const lightToDark = () => {
   if (hamburger.classList.contains('light')) {
     body.classList.toggle('light');
     section.classList.toggle('light');
@@ -41,101 +54,74 @@ function toggleMenu() {
 hamburger.addEventListener('click', toggleMenu);
 nav.addEventListener('click', closeMenu);
 
-function closeMenu(event) {
-  if (event.target.classList.contains('nav-link')) {
-    hamburger.classList.remove('is-active');
-    nav.classList.remove('is-active');
-    body.classList.remove('is-active');
-    if (hamburger.classList.contains('light')) {
-      body.classList.toggle('light');
-      section.classList.toggle('light');
-      title.classList.toggle('light');
-    }
-  }
-}
-
 // Portfolio buttons and images
 const portfolioImages = document.querySelectorAll('.portfolio-img');
 const portfolioButtons = document.querySelector('.portfolio-buttons');
 
-function changeImage(event) {
+const changeImage = (event) => {
   if(event.target.classList.contains('portfolio-button')) {
     portfolioImages.forEach((img, index) => img.src = `assets/img/${event.target.dataset.season}/${index + 1}.webp`);
   }
 }
 
 portfolioButtons.addEventListener('click', changeImage);
-portfolioButtons.addEventListener('click', changeButtonColor);
 const portfolioButton = document.querySelectorAll('.portfolio-button');
 
-function changeButtonColor(event) {
+const changeButtonColor = (event) => {
   portfolioButton.forEach(el => el.classList.remove('active'));
   event.target.classList.add('active');
 }
 
+portfolioButtons.addEventListener('click', changeButtonColor);
 
 // Caching images
 const seasons = ['winter', 'spring', 'summer', 'autumn'];
 
-seasons.forEach(el => preloadImages(el));
-
-function preloadImages(season) {
+const preloadImages = (season) => {
   for(let i = 1; i <= 6; i++) {
     const img = new Image();
     img.src = `assets/img/${season}/${i}.webp`;
   }
 }
 
+seasons.forEach(el => preloadImages(el));
+
 // Translate
 import i18Obj from './js/translate.js';
 
-function getTranslate(event) {
+const getTranslate = (event) => {
   const textToTranslate = document.querySelectorAll('[data-i18n]');
   const placeholderTranslate = document.querySelectorAll('[data-form]');
 
   if (event.target.classList.contains('ru')) {
     textToTranslate.forEach(el => el.textContent = i18Obj['ru'][el.dataset.i18n]);
-    placeholderTranslate.forEach(el => el.placeholder = i18ObjForm['ru'][el.dataset.form]);
+    placeholderTranslate.forEach(el => el.placeholder = i18Obj['ru'][el.dataset.form]);
     lang = 'ru';
   }
   if (event.target.classList.contains('en')) {
     textToTranslate.forEach(el => el.textContent = i18Obj['en'][el.dataset.i18n]);
-    placeholderTranslate.forEach(el => el.placeholder = i18ObjForm['en'][el.dataset.form]);
+    placeholderTranslate.forEach(el => el.placeholder = i18Obj['en'][el.dataset.form]);
     lang = 'en';
   }
 }
 
 const languages = document.querySelector('.switch-lng');
-
-languages.addEventListener('click', getTranslate);
-languages.addEventListener('click', changeLangColor);
-
 const langs = document.querySelectorAll('.lng');
 
-function changeLangColor(event) {
+const changeLangColor = (event) => {
   langs.forEach(el => el.classList.remove('active'));
   event.target.classList.add('active');
 }
 
-const i18ObjForm = {
-  'en': {
-    'phone': 'Phone',
-    'message': 'Message',
-  },
-  'ru': {
-    'phone': 'Телефон',
-    'message': 'Сообщение',
-  }
-}
+languages.addEventListener('click', getTranslate);
+languages.addEventListener('click', changeLangColor);
 
 // Theme change
 const themeChanger = document.querySelector('.theme-change');
 const themeChangeElements = document.querySelectorAll('.dark');
 const navLinks = document.querySelectorAll('.nav-link');
 
-themeChanger.addEventListener('click', changeTheme);
-
-function changeTheme(event) {
+const changeTheme = (event) => {
   themeChangeElements.forEach(el => el.classList.toggle('light'));
   event.target.classList.toggle('light');
   nav.classList.toggle('light');
@@ -148,20 +134,26 @@ function changeTheme(event) {
   }
 }
 
+themeChanger.addEventListener('click', changeTheme);
+
 // Local storage
 let lang = 'en';
 let theme = 'dark';
+let season = 'autumn';
 
-function setLocalStorage() {
+const setLocalStorage = () => {
   localStorage.setItem('lang', lang);
   localStorage.setItem('theme', theme);
+  localStorage.setItem('season', season);
 }
-window.addEventListener('beforeunload', setLocalStorage)
 
-function getLocalStorage() {
-  if(localStorage.getItem('lang')) {
-    const lang = localStorage.getItem('lang');
+window.addEventListener('beforeunload', setLocalStorage);
 
+const getLocalStorage = () => {
+  if(localStorage.getItem('season')) {
+    const season = localStorage.getItem('season');
+    preloadImages(season);
   }
 }
-window.addEventListener('load', getLocalStorage)
+
+window.addEventListener('load', getLocalStorage);
