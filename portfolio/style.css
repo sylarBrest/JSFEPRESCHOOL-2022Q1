@@ -509,7 +509,7 @@ body {
 }
 
 .rss-link {
-    padding-left: 20px;
+    justify-self: center;
 }
 
 .social-list {
@@ -811,10 +811,6 @@ body {
     .github,
     .footer-link {
         line-height: 0;
-    }
-
-    .rss-link {
-        padding: 0;
     }
 }
 
