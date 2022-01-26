@@ -9,8 +9,8 @@
     --font-h3-skills: normal 700 20px/40px 'Inter', sans-serif;
     --font-elements: normal 400 20px/40px 'Inter', sans-serif;
     --font-text-all: normal 400 20px/40px 'Inter', sans-serif;
-    --font-text-skills: normal 700 18px/36px 'Inter', sans-serif;
-    --font-text-price: normal 700 18px/36px 'Inter', sans-serif;
+    --font-text-skills: normal 400 18px/36px 'Inter', sans-serif;
+    --font-text-price: normal 400 18px/36px 'Inter', sans-serif;
 }
 
 * {
@@ -573,11 +573,11 @@ body {
 
 @media (max-width: 768px) {
     :root {
-        --font-h1: normal 400 32px/64px 'Merriweather', serif;
+        --font-h1: normal 700 32px/64px 'Merriweather', serif;
         --font-h2: normal 700 32px/40.22px 'Merriweather', serif;
         --font-h3-skills: normal 700 20px/40px 'Inter', sans-serif;
         --font-text-all: normal 400 20px/24.2px 'Inter', sans-serif;
-        --font-text-skills: normal 700 18px/21.78px 'Inter', sans-serif;
+        --font-text-skills: normal 400 18px/21.78px 'Inter', sans-serif;
         --font-hamburger: normal 400 35px/72.55px 'Inter', sans-serif;
     }
 
