@@ -24,8 +24,6 @@ console.log(requirements);
 const hamburger = document.querySelector('.hamburger');
 const nav = document.querySelector('nav');
 const body = document.querySelector('body');
-const section = document.querySelector('.skills-container');
-const title = document.querySelector('.section-title');
 
 const toggleMenu = () => {
   hamburger.classList.toggle('is-active');
@@ -43,14 +41,6 @@ const closeMenu = (event) => {
   }
 }
 
-const lightToDark = () => {
-  if (hamburger.classList.contains('light')) {
-    body.classList.toggle('light');
-    section.classList.toggle('light');
-    title.classList.toggle('light');
-  }
-}
-
 hamburger.addEventListener('click', toggleMenu);
 nav.addEventListener('click', closeMenu);
 
@@ -58,21 +48,29 @@ nav.addEventListener('click', closeMenu);
 const portfolioImages = document.querySelectorAll('.portfolio-img');
 const portfolioButtons = document.querySelector('.portfolio-buttons');
 
-const changeImage = (event) => {
+const makeActive = (elements, value, data) => {
+  elements.forEach(el => {
+    el.classList.remove('active');
+    if (el.dataset[data] === value) {
+      el.classList.add('active');
+    }
+  });
+}
+
+const changeImage = (season) => {
+  makeActive(portfolioButton, season, 'season');
+  portfolioImages.forEach((img, index) => img.src = `assets/img/${season}/${index + 1}.webp`);
+  timeOfYear = season;
+}
+
+const changeImageEvent = (event) => {
   if(event.target.classList.contains('portfolio-button')) {
-    portfolioImages.forEach((img, index) => img.src = `assets/img/${event.target.dataset.season}/${index + 1}.webp`);
+    changeImage(event.target.dataset.season);
   }
 }
 
-portfolioButtons.addEventListener('click', changeImage);
+portfolioButtons.addEventListener('click', changeImageEvent);
 const portfolioButton = document.querySelectorAll('.portfolio-button');
-
-const changeButtonColor = (event) => {
-  portfolioButton.forEach(el => el.classList.remove('active'));
-  event.target.classList.add('active');
-}
-
-portfolioButtons.addEventListener('click', changeButtonColor);
 
 // Caching images
 const seasons = ['winter', 'spring', 'summer', 'autumn'];
@@ -134,25 +132,40 @@ const changeTheme = (event) => {
   }
 }
 
+const section = document.querySelector('.skills-container');
+const title = document.querySelector('.section-title');
+
+function lightToDark() {
+  if (hamburger.classList.contains('light')) {
+    body.classList.toggle('light');
+    section.classList.toggle('light');
+    title.classList.toggle('light');
+  }
+}
+
 themeChanger.addEventListener('click', changeTheme);
 
 // Local storage
 let lang = 'en';
 let theme = 'dark';
-let season = 'autumn';
+let timeOfYear = 'autumn';
 
 const setLocalStorage = () => {
   localStorage.setItem('lang', lang);
   localStorage.setItem('theme', theme);
-  localStorage.setItem('season', season);
+  localStorage.setItem('season', timeOfYear);
 }
 
 window.addEventListener('beforeunload', setLocalStorage);
 
 const getLocalStorage = () => {
-  if(localStorage.getItem('season')) {
+  if (localStorage.getItem('season')) {
     const season = localStorage.getItem('season');
-    preloadImages(season);
+    changeImage(season);
+  }
+  else {
+    setLocalStorage();
+    getLocalStorage();
   }
 }
 
