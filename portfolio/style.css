@@ -196,8 +196,8 @@ body {
     height: 55px;
     cursor: pointer;
     font: inherit;
-    transition: 0.5s;
     color: var(--color-gold);
+    transition: box-shadow 0.5s ease-in-out, color 0.5s ease-in-out, hover 0.5s;
 }
 
 .portfolio-button.light {
@@ -212,13 +212,18 @@ body {
 }
 
 
-.button-gold:hover,
-.portfolio-button:hover {
+.button-gold:hover {
     color: var(--color-white);
 }
 
+.portfolio-button:hover {
+    box-shadow: 0 0 40px 40px var(--color-gold) inset;
+    color: var(--bg-dark)
+}
+
 .portfolio-button.light:hover {
-    background: var(--color-gold);
+    box-shadow: 0 0 40px 40px var(--color-gold) inset;
+    /*background: var(--color-gold);*/
     color: var(--color-white);
 }
 
