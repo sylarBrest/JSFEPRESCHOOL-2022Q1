@@ -45,9 +45,6 @@ hamburger.addEventListener('click', toggleMenu);
 nav.addEventListener('click', closeMenu);
 
 // Portfolio buttons and images
-const portfolioImages = document.querySelectorAll('.portfolio-img');
-const portfolioButtons = document.querySelector('.portfolio-buttons');
-
 const makeActive = (elements, value, data) => {
   elements.forEach(el => {
     el.classList.remove('active');
@@ -58,8 +55,8 @@ const makeActive = (elements, value, data) => {
 }
 
 const changeImage = (season) => {
-  makeActive(portfolioButton, season, 'season');
-  portfolioImages.forEach((img, index) => img.src = `assets/img/${season}/${index + 1}.webp`);
+  makeActive(document.querySelectorAll('.portfolio-button'), season, 'season');
+  document.querySelectorAll('.portfolio-img').forEach((img, index) => img.src = `assets/img/${season}/${index + 1}.webp`);
   timeOfYear = season;
 }
 
@@ -69,12 +66,9 @@ const changeImageEvent = (event) => {
   }
 }
 
-portfolioButtons.addEventListener('click', changeImageEvent);
-const portfolioButton = document.querySelectorAll('.portfolio-button');
+document.querySelector('.portfolio-buttons').addEventListener('click', changeImageEvent);
 
 // Caching images
-const seasons = ['winter', 'spring', 'summer', 'autumn'];
-
 const preloadImages = (season) => {
   for(let i = 1; i <= 6; i++) {
     const img = new Image();
@@ -82,37 +76,23 @@ const preloadImages = (season) => {
   }
 }
 
-seasons.forEach(el => preloadImages(el));
+['winter', 'spring', 'summer', 'autumn'].forEach(el => preloadImages(el));
 
 // Translate
 import i18Obj from './js/translate.js';
 
-const getTranslate = (event) => {
-  const textToTranslate = document.querySelectorAll('[data-i18n]');
-  const placeholderTranslate = document.querySelectorAll('[data-form]');
-
-  if (event.target.classList.contains('ru')) {
-    textToTranslate.forEach(el => el.textContent = i18Obj['ru'][el.dataset.i18n]);
-    placeholderTranslate.forEach(el => el.placeholder = i18Obj['ru'][el.dataset.form]);
-    lang = 'ru';
-  }
-  if (event.target.classList.contains('en')) {
-    textToTranslate.forEach(el => el.textContent = i18Obj['en'][el.dataset.i18n]);
-    placeholderTranslate.forEach(el => el.placeholder = i18Obj['en'][el.dataset.form]);
-    lang = 'en';
-  }
+const getTranslate = (lang) => {
+  document.querySelectorAll('[data-i18n]').forEach(el => el.textContent = i18Obj[lang][el.dataset.i18n]);
+  document.querySelectorAll('[data-form]').forEach(el => el.placeholder = i18Obj[lang][el.dataset.form]);
+  makeActive(document.querySelectorAll('.lng'), lang, 'lang');
+  language = lang;
 }
 
-const languages = document.querySelector('.switch-lng');
-const langs = document.querySelectorAll('.lng');
-
-const changeLangColor = (event) => {
-  langs.forEach(el => el.classList.remove('active'));
-  event.target.classList.add('active');
+const makeTranslate = (event) => {
+  getTranslate(event.target.dataset.lang);
 }
 
-languages.addEventListener('click', getTranslate);
-languages.addEventListener('click', changeLangColor);
+document.querySelector('.switch-lng').addEventListener('click', makeTranslate);
 
 // Theme change
 const themeChanger = document.querySelector('.theme-change');
@@ -146,12 +126,12 @@ function lightToDark() {
 themeChanger.addEventListener('click', changeTheme);
 
 // Local storage
-let lang = 'en';
+let language = 'en';
 let theme = 'dark';
 let timeOfYear = 'autumn';
 
 const setLocalStorage = () => {
-  localStorage.setItem('lang', lang);
+  localStorage.setItem('lang', language);
   localStorage.setItem('theme', theme);
   localStorage.setItem('season', timeOfYear);
 }
@@ -159,9 +139,9 @@ const setLocalStorage = () => {
 window.addEventListener('beforeunload', setLocalStorage);
 
 const getLocalStorage = () => {
-  if (localStorage.getItem('season')) {
-    const season = localStorage.getItem('season');
-    changeImage(season);
+  if (localStorage.getItem('season') && localStorage.getItem('lang')) {
+    changeImage(localStorage.getItem('season'));
+    getTranslate(localStorage.getItem('lang'));
   }
   else {
     setLocalStorage();
