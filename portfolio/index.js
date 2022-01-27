@@ -1,5 +1,5 @@
 // Self-check
-let requirements = `Итоговая оценка: 75/85.
+let requirements = `Итоговая оценка: 80/85.
 1. Смена изображений в секции portfolio +25
 Изображения разных времён года получаем из папок с соответствующими названиями
 Изображения заменены на другие с целью улучшения качества созданного приложения
@@ -16,6 +16,7 @@ let requirements = `Итоговая оценка: 75/85.
   - тёмная тема приложения сменяется светлой +10
   - светлая тема приложения сменяется тёмной +10
   - после смены светлой и тёмной темы интерактивные элементы по-прежнему изменяют внешний вид при наведении и клике и при этом остаются видимыми на странице (нет ситуации с белым шрифтом на белом фоне) +5
+4. Дополнительный функционал: выбранный пользователем язык отображения страницы, набор изображений portfolio и тема сохраняются при перезагрузке страницы +5
 `;
 
 console.log(requirements);
@@ -88,28 +89,22 @@ const getTranslate = (lang) => {
   language = lang;
 }
 
-const makeTranslate = (event) => {
-  getTranslate(event.target.dataset.lang);
-}
+const makeTranslate = (event) => getTranslate(event.target.dataset.lang);
 
 document.querySelector('.switch-lng').addEventListener('click', makeTranslate);
 
 // Theme change
-const themeChanger = document.querySelector('.theme-change');
-const themeChangeElements = document.querySelectorAll('.dark');
-const navLinks = document.querySelectorAll('.nav-link');
+const changeTheme = (color) => {
+  (color === 'light')
+    ? document.querySelectorAll('[data-theme]').forEach(el => el.classList.add('light'))
+    : document.querySelectorAll('[data-theme]').forEach(el => el.classList.remove('light'));
+  theme = color;
+}
 
-const changeTheme = (event) => {
-  themeChangeElements.forEach(el => el.classList.toggle('light'));
-  event.target.classList.toggle('light');
-  nav.classList.toggle('light');
-  navLinks.forEach(el => el.classList.toggle('light'));
-  if (event.target.classList.contains('dark')) {
-    theme = 'dark'
-  }
-  if (event.target.classList.contains('light')) {
-    theme = 'light'
-  }
+const changeThemeOnClick = (event) => {
+  (event.target.classList.contains('light'))
+    ? changeTheme('dark')
+    : changeTheme('light');
 }
 
 const section = document.querySelector('.skills-container');
@@ -123,7 +118,7 @@ function lightToDark() {
   }
 }
 
-themeChanger.addEventListener('click', changeTheme);
+document.querySelector('.theme-change').addEventListener('click', changeThemeOnClick);
 
 // Local storage
 let language = 'en';
@@ -139,9 +134,10 @@ const setLocalStorage = () => {
 window.addEventListener('beforeunload', setLocalStorage);
 
 const getLocalStorage = () => {
-  if (localStorage.getItem('season') && localStorage.getItem('lang')) {
+  if (localStorage.getItem('season') && localStorage.getItem('lang') && localStorage.getItem('theme')) {
     changeImage(localStorage.getItem('season'));
     getTranslate(localStorage.getItem('lang'));
+    changeTheme(localStorage.getItem('theme'));
   }
   else {
     setLocalStorage();
