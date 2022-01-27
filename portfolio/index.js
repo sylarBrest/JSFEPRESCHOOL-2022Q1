@@ -1,5 +1,5 @@
 // Self-check
-let requirements = `Итоговая оценка: 80/85.
+let requirements = `Итоговая оценка: 85/85.
 1. Смена изображений в секции portfolio +25
 Изображения разных времён года получаем из папок с соответствующими названиями
 Изображения заменены на другие с целью улучшения качества созданного приложения
@@ -17,111 +17,15 @@ let requirements = `Итоговая оценка: 80/85.
   - светлая тема приложения сменяется тёмной +10
   - после смены светлой и тёмной темы интерактивные элементы по-прежнему изменяют внешний вид при наведении и клике и при этом остаются видимыми на странице (нет ситуации с белым шрифтом на белом фоне) +5
 4. Дополнительный функционал: выбранный пользователем язык отображения страницы, набор изображений portfolio и тема сохраняются при перезагрузке страницы +5
-5. Дополнительный функционал: эффект pаполнения кнопок внутрь в секции portfolio при наведении +5
+5. Дополнительный функционал: эффект заполнения кнопок внутрь в секции portfolio при наведении +5
 `;
 
 console.log(requirements);
 
-// Hamburger menu
-const hamburger = document.querySelector('.hamburger');
-const nav = document.querySelector('nav');
-const body = document.querySelector('body');
-
-const toggleMenu = () => {
-  hamburger.classList.toggle('is-active');
-  nav.classList.toggle('is-active');
-  body.classList.toggle('is-active');
-  lightToDark();
-}
-
-const closeMenu = (event) => {
-  if (event.target.classList.contains('nav-link')) {
-    hamburger.classList.remove('is-active');
-    nav.classList.remove('is-active');
-    body.classList.remove('is-active');
-    lightToDark();
-  }
-}
-
-hamburger.addEventListener('click', toggleMenu);
-nav.addEventListener('click', closeMenu);
-
-// Portfolio buttons and images
-const makeActive = (elements, value, data) => {
-  elements.forEach(el => {
-    el.classList.remove('active');
-    if (el.dataset[data] === value) {
-      el.classList.add('active');
-    }
-  });
-}
-
-const changeImage = (season) => {
-  makeActive(document.querySelectorAll('.portfolio-button'), season, 'season');
-  document.querySelectorAll('.portfolio-img').forEach((img, index) => img.src = `assets/img/${season}/${index + 1}.webp`);
-  timeOfYear = season;
-}
-
-const changeImageEvent = (event) => {
-  if(event.target.classList.contains('portfolio-button')) {
-    changeImage(event.target.dataset.season);
-  }
-}
-
-document.querySelector('.portfolio-buttons').addEventListener('click', changeImageEvent);
-
-// Caching images
-const preloadImages = (season) => {
-  for(let i = 1; i <= 6; i++) {
-    const img = new Image();
-    img.src = `assets/img/${season}/${i}.webp`;
-  }
-}
-
-['winter', 'spring', 'summer', 'autumn'].forEach(el => preloadImages(el));
-
-// Translate
+import variable from './js/params.js';
 import i18Obj from './js/translate.js';
 
-const getTranslate = (lang) => {
-  document.querySelectorAll('[data-i18n]').forEach(el => el.textContent = i18Obj[lang][el.dataset.i18n]);
-  document.querySelectorAll('[data-form]').forEach(el => el.placeholder = i18Obj[lang][el.dataset.form]);
-  makeActive(document.querySelectorAll('.lng'), lang, 'lang');
-  language = lang;
-}
-
-const makeTranslate = (event) => getTranslate(event.target.dataset.lang);
-
-document.querySelector('.switch-lng').addEventListener('click', makeTranslate);
-
-// Theme change
-const changeTheme = (color) => {
-  (color === 'light')
-    ? document.querySelectorAll('[data-theme]').forEach(el => el.classList.add('light'))
-    : document.querySelectorAll('[data-theme]').forEach(el => el.classList.remove('light'));
-  theme = color;
-}
-
-const changeThemeOnClick = (event) => {
-  (event.target.classList.contains('light'))
-    ? changeTheme('dark')
-    : changeTheme('light');
-}
-
-const section = document.querySelector('.skills-container');
-const title = document.querySelector('.section-title');
-
-function lightToDark() {
-  if (hamburger.classList.contains('light')) {
-    body.classList.toggle('light');
-    section.classList.toggle('light');
-    title.classList.toggle('light');
-  }
-}
-
-document.querySelector('.theme-change').addEventListener('click', changeThemeOnClick);
-
-// Local storage
+//Local Storage
 let language = 'en';
 let theme = 'dark';
 let timeOfYear = 'autumn';
@@ -131,8 +35,6 @@ const setLocalStorage = () => {
   localStorage.setItem('theme', theme);
   localStorage.setItem('season', timeOfYear);
 }
-
-window.addEventListener('beforeunload', setLocalStorage);
 
 const getLocalStorage = () => {
   if (localStorage.getItem('season') && localStorage.getItem('lang') && localStorage.getItem('theme')) {
@@ -147,3 +49,90 @@ const getLocalStorage = () => {
 }
 
 window.addEventListener('load', getLocalStorage);
+window.addEventListener('beforeunload', setLocalStorage);
+
+// Hamburger menu
+const toggleMenu = () => {
+  variable['hamburger'].classList.toggle('is-active');
+  variable['nav'].classList.toggle('is-active');
+  variable['body'].classList.toggle('is-active');
+  lightToDark();
+}
+
+const closeMenu = (event) => {
+  if (event.target.classList.contains('nav-link')) {
+    variable['hamburger'].classList.remove('is-active');
+    variable['nav'].classList.remove('is-active');
+    variable['body'].classList.remove('is-active');
+    lightToDark();
+  }
+}
+
+// Portfolio buttons and images
+const makeActive = (elements, value, data) => {
+  elements.forEach(el => {
+    el.classList.remove('active');
+    if (el.dataset[data] === value) {
+      el.classList.add('active');
+    }
+  });
+}
+
+const changeImage = (season) => {
+  makeActive(variable['portfolio-button'], season, 'season');
+  variable['portfolio-img'].forEach((img, index) => img.src = `assets/img/${season}/${index + 1}.webp`);
+  timeOfYear = season;
+}
+
+const changeImageEvent = (event) => {
+  if(event.target.classList.contains('portfolio-button')) {
+    changeImage(event.target.dataset.season);
+  }
+}
+
+// Caching images
+const preloadImages = (season) => {
+  for(let i = 1; i <= 6; i++) {
+    const img = new Image();
+    img.src = `assets/img/${season}/${i}.webp`;
+  }
+}
+
+// Translate
+const getTranslate = (lang) => {
+  variable['data-i18n'].forEach(el => el.textContent = i18Obj[lang][el.dataset.i18n]);
+  variable['data-form'].forEach(el => el.placeholder = i18Obj[lang][el.dataset.form]);
+  makeActive(variable['lng'], lang, 'lang');
+  language = lang;
+}
+
+const makeTranslate = (event) => getTranslate(event.target.dataset.lang);
+
+// Theme change
+const changeTheme = (color) => {
+  (color === 'light')
+    ? variable['data-theme'].forEach(el => el.classList.add('light'))
+    : variable['data-theme'].forEach(el => el.classList.remove('light'));
+  theme = color;
+}
+
+const changeThemeOnClick = (event) => {
+  (event.target.classList.contains('light'))
+    ? changeTheme('dark')
+    : changeTheme('light');
+}
+
+function lightToDark() {
+  if (variable['hamburger'].classList.contains('light')) {
+    variable['body'].classList.toggle('light');
+    variable['skills-container'].classList.toggle('light');
+    variable['section-title'].classList.toggle('light');
+  }
+}
+
+variable['seasons'].forEach(el => preloadImages(el));
+variable['theme-change'].addEventListener('click', changeThemeOnClick);
+variable['switch-lng'].addEventListener('click', makeTranslate);
+variable['portfolio-buttons'].addEventListener('click', changeImageEvent);
+variable['hamburger'].addEventListener('click', toggleMenu);
+variable['nav'].addEventListener('click', closeMenu);

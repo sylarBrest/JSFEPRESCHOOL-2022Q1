@@ -223,7 +223,6 @@ body {
 
 .portfolio-button.light:hover {
     box-shadow: 0 0 40px 40px var(--color-gold) inset;
-    /*background: var(--color-gold);*/
     color: var(--color-white);
 }
 
