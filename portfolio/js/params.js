@@ -12,7 +12,8 @@ const variable = {
   'switch-lng': document.querySelector('.switch-lng'),
   'data-theme': document.querySelectorAll('[data-theme]'),
   'skills-container': document.querySelector('.skills-container'),
-  'section-title': document.querySelector('.section-title'),
+  'portfolio-container': document.querySelector('.portfolio-container'),
+  'section-title': document.querySelectorAll('.section-title'),
   'theme-change': document.querySelector('.theme-change'),
 }
 export default variable;

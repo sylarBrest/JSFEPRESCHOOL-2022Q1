@@ -127,7 +127,9 @@ function lightToDark() {
   if (variable['hamburger'].classList.contains('light')) {
     variable['body'].classList.toggle('light');
     variable['skills-container'].classList.toggle('light');
-    variable['section-title'].classList.toggle('light');
+    variable['portfolio-container'].classList.toggle('light');
+    variable['section-title'].forEach(el => el.classList.toggle('light'));
+    variable['portfolio-button'].forEach(el => el.classList.toggle('light'));
   }
 }
 
