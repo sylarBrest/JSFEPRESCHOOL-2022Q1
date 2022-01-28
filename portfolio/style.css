@@ -402,6 +402,10 @@ body {
     margin: 0;
 }
 
+.price-item-dollars.light {
+    color: #746330;
+}
+
 .price-item-description {
     font: var(--font-text-price);
     padding-bottom: 39px;
@@ -677,6 +681,10 @@ body {
         cursor: pointer;
     }
     
+    .hamburger:hover .line {
+        background: var(--color-gold);
+    }
+
     .hamburger.is-active .line:nth-child(2){
         opacity: 0;
     }
@@ -699,6 +707,10 @@ body {
 
     .hamburger.light {
         background: none;
+    }
+
+    .hamburger.light:hover .line {
+        background: var(--color-gold);
     }
 
     .hero-container {
