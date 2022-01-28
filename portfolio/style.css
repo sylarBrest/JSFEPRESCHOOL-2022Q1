@@ -350,16 +350,12 @@ body {
     width: 100%;
 }
 
-.video-player-image-768 {
-    display: none;
-    width: 100%;
-}
-
 .video-player-button {
     position: absolute;
     background: transparent;
-    background-image: url('assets/svg/Play_hover.svg');
+    background-image: url('assets/svg/play-btn.svg');
     background-repeat: no-repeat;
+    background-size: 130px 130px;
     transition: 0.5s;
     border: 0;
     color: var(--color-white);
@@ -768,16 +764,8 @@ body {
         padding-top: 10px;
     }
 
-    .video-player-image {
-        display: none;
-    }
-    
-    .video-player-image-768 {
-        display: block;
-    }
-
     .video-player-button {
-        background-image: url('assets/svg/play-btn.svg');
+        background-size: 75px 75px;
         width: 75px;
         height: 75px;
     }
