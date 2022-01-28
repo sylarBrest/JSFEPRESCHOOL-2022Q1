@@ -34,7 +34,7 @@ const setLocalStorage = () => {
   localStorage.setItem('lang', language);
   localStorage.setItem('theme', theme);
   localStorage.setItem('season', timeOfYear);
-}
+};
 
 const getLocalStorage = () => {
   if (localStorage.getItem('season') && localStorage.getItem('lang') && localStorage.getItem('theme')) {
@@ -47,7 +47,7 @@ const getLocalStorage = () => {
     getLocalStorage();
   }
   variable['body'].style.display = 'flex';
-}
+};
 
 window.addEventListener('load', getLocalStorage);
 window.addEventListener('beforeunload', setLocalStorage);
@@ -58,7 +58,7 @@ const toggleMenu = () => {
   variable['nav'].classList.toggle('is-active');
   variable['body'].classList.toggle('is-active');
   lightToDark();
-}
+};
 
 const closeMenu = (event) => {
   if (event.target.classList.contains('nav-link')) {
@@ -67,7 +67,7 @@ const closeMenu = (event) => {
     variable['body'].classList.remove('is-active');
     lightToDark();
   }
-}
+};
 
 // Portfolio buttons and images
 const makeActive = (elements, value, data) => {
@@ -77,19 +77,19 @@ const makeActive = (elements, value, data) => {
       el.classList.add('active');
     }
   });
-}
+};
 
 const changeImage = (season) => {
   makeActive(variable['portfolio-button'], season, 'season');
   variable['portfolio-img'].forEach((img, index) => img.src = `assets/img/${season}/${index + 1}.webp`);
   timeOfYear = season;
-}
+};
 
 const changeImageEvent = (event) => {
   if(event.target.classList.contains('portfolio-button')) {
     changeImage(event.target.dataset.season);
   }
-}
+};
 
 // Caching images
 const preloadImages = (season) => {
@@ -97,7 +97,7 @@ const preloadImages = (season) => {
     const img = new Image();
     img.src = `assets/img/${season}/${i}.webp`;
   }
-}
+};
 
 // Translate
 const getTranslate = (lang) => {
@@ -105,9 +105,13 @@ const getTranslate = (lang) => {
   variable['data-form'].forEach(el => el.placeholder = i18Obj[lang][el.dataset.form]);
   makeActive(variable['lng'], lang, 'lang');
   language = lang;
-}
+};
 
-const makeTranslate = (event) => getTranslate(event.target.dataset.lang);
+const makeTranslate = (event) => {
+  if (event.target.dataset.lang) {
+    getTranslate(event.target.dataset.lang);
+  }
+};
 
 // Theme change
 const changeTheme = (color) => {
@@ -115,13 +119,13 @@ const changeTheme = (color) => {
     ? variable['data-theme'].forEach(el => el.classList.add('light'))
     : variable['data-theme'].forEach(el => el.classList.remove('light'));
   theme = color;
-}
+};
 
 const changeThemeOnClick = (event) => {
   (event.target.classList.contains('light'))
     ? changeTheme('dark')
     : changeTheme('light');
-}
+};
 
 function lightToDark() {
   if (variable['hamburger'].classList.contains('light')) {
