@@ -24,7 +24,7 @@ html {
 }
 
 body {
-    display: flex;
+    display: none;
     flex-direction: column;
     font: var(--font-elements);
     color: var(--color-white);
@@ -120,12 +120,10 @@ body {
     background: none;
 }
 
-
 .nav-link.light {
     color: var(--color-white);
     background: none;
 }
-
 
 .darken {
     display: none;
@@ -211,14 +209,13 @@ body {
     color: var(--bg-dark);
 }
 
-
 .button-gold:hover {
     color: var(--color-white);
 }
 
 .portfolio-button:hover {
     box-shadow: 0 0 40px 40px var(--color-gold) inset;
-    color: var(--bg-dark)
+    color: var(--color-white);
 }
 
 .portfolio-button.light:hover {

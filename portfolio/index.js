@@ -46,6 +46,7 @@ const getLocalStorage = () => {
     setLocalStorage();
     getLocalStorage();
   }
+  variable['body'].style.display = 'flex';
 }
 
 window.addEventListener('load', getLocalStorage);
