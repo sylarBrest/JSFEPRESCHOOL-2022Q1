@@ -77,7 +77,8 @@ body {
     text-decoration: none;
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.nav-link.light:hover {
     color: var(--color-gold);
 }
 
