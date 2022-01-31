@@ -58,12 +58,9 @@ body {
     transition: 0.5s;
     width: 50px;
     height: 50px;
+    fill: var(--color-white);
     cursor: pointer;
     margin-right: auto;
-}
-
-.logo:hover {
-    filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%) contrast(87%);
 }
 
 .nav-list {
@@ -139,10 +136,6 @@ body {
     cursor: pointer;
 }
 
-.theme-change:hover {
-    filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%) contrast(87%);
-}
-
 .main-container {
     display: flex;
     flex-direction: column;
@@ -154,9 +147,9 @@ body {
 .hero-container {
     display: flex;
     background-image: url('assets/img/header-bg.webp');
-    background-position: center -90px;
-    background-size: auto auto;
+    background-size: auto 910px;
     background-repeat: no-repeat;
+    background-position: center -90px;
     height: 820px;
 }
 
@@ -205,19 +198,11 @@ body {
 
 .portfolio-button.active {
     background: var(--color-gold);
-    border: 0;
     color: var(--bg-dark);
 }
 
-.button-gold:hover {
-    color: var(--color-white);
-}
-
-.portfolio-button:hover {
-    box-shadow: 0 0 40px 40px var(--color-gold) inset;
-    color: var(--color-white);
-}
-
+.button-gold:hover,
+.portfolio-button:hover,
 .portfolio-button.light:hover {
     box-shadow: 0 0 40px 40px var(--color-gold) inset;
     color: var(--color-white);
@@ -350,26 +335,18 @@ body {
     width: 100%;
 }
 
-.video-player-image-768 {
-    display: none;
-    width: 100%;
-}
-
 .video-player-button {
     position: absolute;
     background: transparent;
-    background-image: url('assets/svg/Play_hover.svg');
+    background-image: url('assets/svg/play-btn.svg');
     background-repeat: no-repeat;
+    background-size: 130px 130px;
     transition: 0.5s;
     border: 0;
     color: var(--color-white);
     height: 130px;
     cursor: pointer;
     width: 130px;
-}
-
-.video-player-button:hover {
-    filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%) contrast(87%);
 }
 
 .price-items {
@@ -402,6 +379,10 @@ body {
     margin: 0;
 }
 
+.price-item-dollars.light {
+    color: #746330;
+}
+
 .price-item-description {
     font: var(--font-text-price);
     padding-bottom: 39px;
@@ -418,8 +399,7 @@ body {
 
 .contacts-container {
     background-image: url('assets/img/contacts-bg.webp');
-    background-size: auto auto;
-    background-position: 0 center;
+    background-position: center;
     display: flex;
     justify-content: flex-end;
     height: 700px;
@@ -550,6 +530,9 @@ body {
     height: 32px;
 }
 
+.logo:hover,
+.theme-change:hover,
+.video-player-button:hover,
 .instagram:hover,
 .facebook:hover,
 .twitter:hover,
@@ -583,9 +566,8 @@ body {
     }
 
     .header {
-        background: url('assets/img/header-bg-small.webp');
-        background-repeat: no-repeat;
-        background-position: center 0;
+        background-size: auto 620px;
+        background-position: -5px -30px;
     }
     
     .header-container {
@@ -677,6 +659,10 @@ body {
         cursor: pointer;
     }
     
+    .hamburger:hover .line {
+        background: var(--color-gold);
+    }
+
     .hamburger.is-active .line:nth-child(2){
         opacity: 0;
     }
@@ -701,9 +687,14 @@ body {
         background: none;
     }
 
+    .hamburger.light:hover .line {
+        background: var(--color-gold);
+    }
+
     .hero-container {
-        background-image: url('assets/img/header-bg-small.webp');
         height: 590px;
+        background-position: -5px -120px;
+        background-size: auto 620px;
     }
 
     .hero {
@@ -756,16 +747,8 @@ body {
         padding-top: 10px;
     }
 
-    .video-player-image {
-        display: none;
-    }
-    
-    .video-player-image-768 {
-        display: block;
-    }
-
     .video-player-button {
-        background-image: url('assets/svg/play-btn.svg');
+        background-size: 75px 75px;
         width: 75px;
         height: 75px;
     }
@@ -780,12 +763,13 @@ body {
     }
 
     .contacts-container {
-        padding-top: 80px;
-        background-image: url('assets/img/contacts-bg-small.webp');
-        background-position: center 70px;
+        margin-top: 70px;
+        padding-top: 10px;
+        background-position: center center;
         background-repeat: no-repeat;
+        background-size: auto 600px;
         justify-content: center;
-        height: 670px;
+        height: 600px;
     }
 
     .contacts-title {
@@ -799,7 +783,7 @@ body {
 
     .footer-container {
         flex-direction: column;
-        padding: 37px;
+        padding: 40px 0 35px;
         gap: 30px;
     }
 
@@ -832,7 +816,6 @@ body {
 }
 
 @media (max-width: 340px) {
-
     .header-container {
         gap: 15px;
     }
