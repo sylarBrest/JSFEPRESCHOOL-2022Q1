@@ -328,6 +328,7 @@ body {
 .video-player {
     position: relative;
     display: flex;
+    flex-flow: column;
     align-items: center;
     justify-content: center;
 }
@@ -348,6 +349,11 @@ body {
     height: 130px;
     cursor: pointer;
     width: 130px;
+}
+
+.controls {
+    justify-self: flex-end;
+    align-self: stretch;
 }
 
 .price-items {
