@@ -62,19 +62,26 @@ body {
     justify-content: center;
 }
 
-.play-pause {
+.play {
     background: transparent;
     background: url('assets/svg/play.svg');
     background-repeat: no-repeat;
     background-size: 130px 130px;
-    transition: 0.5s;
+    transition: all 1s;
     border: 0;
     height: 130px;
     cursor: pointer;
     width: 130px;
 }
 
-.play-pause:hover {
+.pause {
+    background: url('assets/svg/pause.svg');
+    background-repeat: no-repeat;
+    background-size: 130px 130px;
+    transition: all 1s;
+}
+
+.play:hover {
     filter: brightness(88%);
 }
 
