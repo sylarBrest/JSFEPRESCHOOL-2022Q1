@@ -9,30 +9,37 @@ let requirements = `Итоговая оценка: 70/70.
   - есть кнопка Play/Pause, при клике по которой можно запустить или остановить проигрывание звука +10
   - внешний вид и функционал кнопки Play/Pause изменяется в зависимости от того, проигрывается ли в данный момент звук +10
 6. Дополнительный - не предусмотренный в задании - функционал, улучшающий качество приложения +10
-  - Кнопка Скачать, по нажатию на которую можно скачать звук, выбранный в текущий момент
+  - кнопка Скачать, по нажатию на которую можно скачать звук, выбранный в текущий момент
+  - кеширование изображений и иконок при загрузке
+  - кеширование аудиозаписей при первом проигрывании
 `;
 
 console.log(requirements);
 
 let isPlay = false;
-const button = document.querySelector('.play');
+const playerButton = document.querySelector('.play');
 const audio = new Audio();
-audio.src = `assets/audio/forest.mp3`
-const image = new Image();
+audio.src = `assets/audio/forest.mp3`;
 const main = document.querySelector('.main');
-const links = document.querySelectorAll('.nav-item');
+const navLinks = document.querySelectorAll('.nav-item');
 const sounds = document.querySelector('.nav-list');
-const download = document.querySelector('.download');
+const downloadButton = document.querySelector('.download');
+const icons = ['download', 'logo', 'pause', 'play', 'rss'];
 
 const setAudio = (source) => audio.src = `assets/audio/${source}.mp3`;
 
 const setImage = (source) => main.style.backgroundImage = `url('assets/img/${source}.webp')`;
 
-const setDownload = (source) => download.href = `assets/audio/${source}.mp3`;
+const setDownload = (source) => downloadButton.href = `assets/audio/${source}.mp3`;
 
 const setActive = (elem) => {
-    links.forEach(el => el.classList.remove('active'));
+    navLinks.forEach(el => el.classList.remove('active'));
     elem.classList.add('active');
+}
+
+const preloadSound = (source) => {
+    const snd = new Audio();
+    snd.src = `assets/audio/${source}.mp3`;
 }
 
 const playAudio = () => {
@@ -47,23 +54,36 @@ const playAudio = () => {
 }
 
 const toggleBtn = () => {
-    button.classList.toggle('pause');
+    playerButton.classList.toggle('pause');
     playAudio();
 }
 
 const selectAudio = (event) => {
     isPlay = false;
     if (event.target.dataset.audio) {
-        if (button.classList.contains('pause')) {
-            button.classList.remove('pause');
+        if (playerButton.classList.contains('pause')) {
+            playerButton.classList.remove('pause');
         }
         setAudio(event.target.dataset.audio);
         setImage(event.target.dataset.audio);
         setDownload(event.target.dataset.audio);
         setActive(event.target);
+        preloadSound(event.target.dataset.audio);
         toggleBtn();
     }
 }
 
-button.addEventListener('click', toggleBtn);
+const preloadImages = (source) => {
+    const img = new Image();
+    img.src = `assets/img/${source}.webp`;
+}
+
+const preloadIcons = (source) => {
+    const img = new Image();
+    img.src = `assets/svg/${source}.svg`;
+}
+
+playerButton.addEventListener('click', toggleBtn);
 sounds.addEventListener('click', selectAudio);
+navLinks.forEach(el => preloadImages(el.dataset.audio));
+icons.forEach(el => preloadIcons(el));
