@@ -142,26 +142,34 @@ const player = document.querySelector('.video-player');
 const video = player.querySelector('.video');
 const play = player.querySelector('.play');
 const progress = player.querySelector('.progress');
-const mute = player.querySelector('.mute');
-const volume = player.querySelector('volume');
-const ranges = player.querySelectorAll('.player-slider');
+const volumeButton = player.querySelector('.volume-button');
+const volume = player.querySelector('.volume');
 
 const togglePlay = () => (video.paused) ? video.play() : video.pause();
 
-const updatePlayButton = () => {
-  (video.paused)
-    ? play.style.backgroundImage = `url('assets/svg/play.svg')`
-    : play.style.backgroundImage = `url('assets/svg/pause.svg')`;
+const updatePlayButton = () => play.style.backgroundImage = (video.paused) ? `url('assets/svg/play.svg')` : `url('assets/svg/pause.svg')`;
+
+const updateMuteButton = vol => (vol) ? volumeButton.classList.remove('mute') : volumeButton.classList.add('mute');
+
+function updateVolume() {
+  if (video.muted) {
+    video.muted = !video.muted;
+  }
+  const percent = this.value / 100;
+  updateMuteButton(percent);
+  video[this.name] = percent;
+  volume.style.background = `linear-gradient(to right, var(--color-gold) 0%, var(--color-gold) ${percent * 100}%, var(--color-white) ${percent * 100}%, var(--color-white) 100%)`;
 }
 
-function updateRange() {
-  console.log(this);
- // video[progress.name] = progress.value;
+const updateVolumeClick = () => {
+  volumeButton.classList.toggle('mute');
+  video.muted = !video.muted;
 }
 
-const updateProgress = () => {
+const updateProgressAuto = () => {
   const percent = (video.currentTime / video.duration) * 100;
-  progress.style.background = `linear-gradient(to right, var(--color-gold) 0%, var(--color-gold) ${percent}%, var(--color-white) ${percent}%, var(--color-white) 100%)`
+  progress.value = percent;
+  progress.style.background = `linear-gradient(to right, var(--color-gold) 0%, var(--color-gold) ${percent}%, var(--color-white) ${percent}%, var(--color-white) 100%)`;
 }
 
 variable['seasons'].forEach(el => preloadImages(el));
@@ -174,6 +182,8 @@ video.addEventListener('click', togglePlay);
 play.addEventListener('click', togglePlay);
 video.addEventListener('play', updatePlayButton);
 video.addEventListener('pause', updatePlayButton);
-video.addEventListener('timeupdate', updateProgress);
-progress.addEventListener('change', updateRange);
-progress.addEventListener('mousemove', updateRange);
+video.addEventListener('timeupdate', updateProgressAuto);
+volume.addEventListener('input', updateVolume);
+volume.addEventListener('change', updateVolume);
+volumeButton.addEventListener('click', updateVolumeClick);
+//progress.addEventListener('mousemove', updateProgressManual);
