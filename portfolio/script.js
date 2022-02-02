@@ -137,9 +137,43 @@ function lightToDark() {
   }
 }
 
+// Video player
+const player = document.querySelector('.video-player');
+const video = player.querySelector('.video');
+const play = player.querySelector('.play');
+const progress = player.querySelector('.progress');
+const mute = player.querySelector('.mute');
+const volume = player.querySelector('volume');
+const ranges = player.querySelectorAll('.player-slider');
+
+const togglePlay = () => (video.paused) ? video.play() : video.pause();
+
+const updatePlayButton = () => {
+  (video.paused)
+    ? play.style.backgroundImage = `url('assets/svg/play.svg')`
+    : play.style.backgroundImage = `url('assets/svg/pause.svg')`;
+}
+
+function updateRange() {
+  console.log(this);
+ // video[progress.name] = progress.value;
+}
+
+const updateProgress = () => {
+  const percent = (video.currentTime / video.duration) * 100;
+  progress.style.background = `linear-gradient(to right, var(--color-gold) 0%, var(--color-gold) ${percent}%, var(--color-white) ${percent}%, var(--color-white) 100%)`
+}
+
 variable['seasons'].forEach(el => preloadImages(el));
 variable['theme-change'].addEventListener('click', changeThemeOnClick);
 variable['switch-lng'].addEventListener('click', makeTranslate);
 variable['portfolio-buttons'].addEventListener('click', changeImageEvent);
 variable['hamburger'].addEventListener('click', toggleMenu);
 variable['nav'].addEventListener('click', closeMenu);
+video.addEventListener('click', togglePlay);
+play.addEventListener('click', togglePlay);
+video.addEventListener('play', updatePlayButton);
+video.addEventListener('pause', updatePlayButton);
+video.addEventListener('timeupdate', updateProgress);
+progress.addEventListener('change', updateRange);
+progress.addEventListener('mousemove', updateRange);
