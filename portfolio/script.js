@@ -144,6 +144,7 @@ const play = player.querySelector('.play');
 const progress = player.querySelector('.progress');
 const volumeButton = player.querySelector('.volume-button');
 const volume = player.querySelector('.volume');
+const playButton = player.querySelector('.video-player-button');
 
 const togglePlay = () => (video.paused) ? video.play() : video.pause();
 
@@ -172,6 +173,13 @@ const updateProgressAuto = () => {
   progress.style.background = `linear-gradient(to right, var(--color-gold) 0%, var(--color-gold) ${percent}%, var(--color-white) ${percent}%, var(--color-white) 100%)`;
 }
 
+const updateProgressManual = () => {
+  video.currentTime = progress.value / 100 * video.duration;
+  updateProgressAuto();
+}
+
+const togglePlayButton = () => playButton.style.visibility = (!video.paused) ? 'hidden' : 'visible';
+
 variable['seasons'].forEach(el => preloadImages(el));
 variable['theme-change'].addEventListener('click', changeThemeOnClick);
 variable['switch-lng'].addEventListener('click', makeTranslate);
@@ -182,8 +190,12 @@ video.addEventListener('click', togglePlay);
 play.addEventListener('click', togglePlay);
 video.addEventListener('play', updatePlayButton);
 video.addEventListener('pause', updatePlayButton);
+video.addEventListener('play', togglePlayButton);
+video.addEventListener('pause', togglePlayButton);
 video.addEventListener('timeupdate', updateProgressAuto);
 volume.addEventListener('input', updateVolume);
 volume.addEventListener('change', updateVolume);
 volumeButton.addEventListener('click', updateVolumeClick);
-//progress.addEventListener('mousemove', updateProgressManual);
+progress.addEventListener('click', updateProgressManual);
+progress.addEventListener('input', updateProgressManual);
+playButton.addEventListener('click', togglePlay);
