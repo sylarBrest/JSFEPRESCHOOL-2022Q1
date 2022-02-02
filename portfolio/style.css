@@ -331,11 +331,29 @@ body {
     display: flex;
     flex-flow: column;
     align-items: center;
+    width: 100%;
     justify-content: center;
+    height: calc(50% + 60px)
+}
+
+.video-poster {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 5;
+    background-image: url('assets/img/video-player.webp');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    cursor: pointer;
+    transition: 0.5s ease-in;
 }
 
 .video {
-    width: 100%;
+    width: calc(100% + 2px);
+    height: auto;
 }
 
 .video-player-button {
@@ -345,6 +363,7 @@ body {
     background-repeat: no-repeat;
     background-size: 130px 130px;
     transition: filter 0.5s;
+    z-index: 10;
     border: 0;
     color: var(--color-white);
     height: 130px;
@@ -356,14 +375,28 @@ body {
     justify-self: flex-end;
     align-self: stretch;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     padding: 5px 20px;
     gap: 5px;
+    height: 60px;
 }
 
-.play {
+.play-control {
+    flex-grow: 15;
+    display: flex;
+    align-items: center;
+}
+
+.volume-control {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+.play,
+.volume-button {
     background: transparent;
-    background: url('assets/svg/play.svg');
     background-size: 30px 30px;
     background-position: center;
     border: 0;
@@ -374,40 +407,33 @@ body {
     transition: 0.5s;
 }
 
-.progress {
-    flex-grow: 9;
-    background: linear-gradient(to right, var(--color-gold) 0%, var(--color-gold) 0%, var(--color-light-grey) 0%, var(--color-light-grey) 100%);
+.progress,
+.volume {
+    flex-grow: 1;
     height: 7px;
     border-radius: 5px;
     outline: none;
     -webkit-appearance: none;
 }
 
+.play {
+    background-image: url('assets/svg/play.svg');
+}
+
 .volume-button {
-    background: transparent;
-    background: url('assets/svg/volume.svg');
-    background-size: 30px 30px;
-    background-position: center;
-    border: 0;
-    background-repeat: no-repeat;
-    cursor: pointer;
-    height: 40px;
-    width: 50px;
-    transition: 0.5s;
+    background-image: url('assets/svg/volume.svg');
 }
 
 .mute {
     background-image: url('assets/svg/mute.svg');
 }
 
+.progress {
+    background: linear-gradient(to right, var(--color-gold) 0%, var(--color-gold) 0%, var(--color-light-grey) 0%, var(--color-light-grey) 100%);
+}
+
 .volume {
-    flex-grow: 1;
     background: linear-gradient(to right, var(--color-gold) 0%, var(--color-gold) 100%, var(--color-light-grey) 100%, var(--color-light-grey) 100%);
-    outline: none;
-    height: 7px;
-    border-radius: 5px;
-    outline: none;
-    -webkit-appearance: none;
 }
 
 .progress::-webkit-slider-thumb,
