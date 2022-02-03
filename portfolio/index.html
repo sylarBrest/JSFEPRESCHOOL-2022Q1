@@ -93,13 +93,13 @@
                 <div class="video-player">
                     <div class="video-poster"></div>
                     <video class="video" src="assets/video/video.mp4"></video>
-                    <div class="video-player-button" aria-label="Play video"></div>
+                    <div class="video-player-button"></div>
                     <div class="controls">
-                        <button class="play"></button>
-                        <input type="range" class="progress" name="progress" value="0" min="0" max="100" step="0.01">
-                        <button class="volume-button"></button>
-                        <input type="range" class="volume" name="volume" value="100" min="0" max="100" step="1">
-                        <button class="expand"></button>
+                        <button class="play" aria-label="Play video"></button>
+                        <input type="range" class="progress" name="progress" id="progress" aria-label="Progress bar" value="0" min="0" max="100" step="0.01">
+                        <button class="volume-button" aria-label="Volume +/-"></button>
+                        <input type="range" class="volume" name="volume" id="volume" aria-label="Volume bar" value="100" min="0" max="100" step="1">
+                        <button class="expand" aria-label="Fullscreen mode"></button>
                     </div>
                 </div>
             </section>

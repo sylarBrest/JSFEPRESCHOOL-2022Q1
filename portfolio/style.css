@@ -372,8 +372,6 @@ body {
     background-size: 130px 130px;
     transition: filter 0.5s;
     z-index: 10;
-    border: 0;
-    color: var(--color-white);
     height: 130px;
     cursor: pointer;
     width: 130px;
