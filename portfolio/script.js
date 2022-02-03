@@ -12,6 +12,14 @@ let requirements = `Итоговая оценка: 60/60.
 6. Кнопка Play/Pause в центре видео +10
   - есть кнопка Play/Pause в центре видео при клике по которой запускается видео и отображается панель управления +5
   - когда видео проигрывается, кнопка Play/Pause в центре видео скрывается, когда видео останавливается, кнопка снова отображается +5
+7. Очень высокое качество оформления приложения и/или дополнительный не предусмотренный в задании функционал, улучшающий качество приложения +10
+  - видео встроено в проект Портфолио
+  - адаптив "работает" вплоть до 320px и не "ломает" вёрстку
+  - есть кнопка переключения в полноэкранный режим:
+    * по нажатию на неё происходит переход в полноэкранный режим, кнопка меняется на другую;
+    * в полноэкранном режиме отображаются созданные элементы управления;
+    * элементы управления съезжают вниз экрана и "растягиваются" на всю ширину экрана;
+    * при нажатии на кнопку выхода из полноэкранного режима или при нажатии на кнопку ESC всё возвращаетс как было до входа в полноэкранный режим.
 `;
 
 console.log(requirements);
@@ -85,7 +93,7 @@ const changeImageEvent = (event) => {
   }
 };
 
-// Caching images
+// Caching images & video
 const preloadImages = (season) => {
   for(let i = 1; i <= 6; i++) {
     const img = new Image();
@@ -134,12 +142,14 @@ function lightToDark() {
 // Video player
 const player = document.querySelector('.video-player');
 const video = player.querySelector('.video');
+const controls = player.querySelector('.controls');
 const play = player.querySelector('.play');
 const progress = player.querySelector('.progress');
 const volumeButton = player.querySelector('.volume-button');
 const volume = player.querySelector('.volume');
 const playButton = player.querySelector('.video-player-button');
 const poster = player.querySelector('.video-poster');
+const fullScreenButton = player.querySelector('.expand');
 
 const togglePlay = () => (video.paused) ? video.play() : video.pause();
 
@@ -181,6 +191,25 @@ const hidePoster = () => {
   poster.style.display = 'block';
 }
 
+const toggleFullScreen = () => {
+  if (document.fullscreenElement) {
+    document.exitFullscreen();
+    fullScreenButton.classList.remove('fullscreen');
+    controls.classList.remove('fullscreen');
+  } else {
+    player.requestFullscreen();
+    fullScreenButton.classList.add('fullscreen');
+    controls.classList.add('fullscreen');
+  }
+}
+
+const exitFullScreen = () => {
+  if (!document.fullscreenElement) {
+    fullScreenButton.classList.remove('fullscreen');
+    controls.classList.remove('fullscreen');
+  }
+}
+
 variable['seasons'].forEach(el => preloadImages(el));
 variable['theme-change'].addEventListener('click', changeThemeOnClick);
 variable['switch-lng'].addEventListener('click', makeTranslate);
@@ -203,3 +232,5 @@ progress.addEventListener('click', updateProgressManual);
 progress.addEventListener('input', updateProgressManual);
 playButton.addEventListener('click', hidePoster);
 playButton.addEventListener('click', togglePlay);
+fullScreenButton.addEventListener('click', toggleFullScreen);
+document.addEventListener('fullscreenchange', exitFullScreen);
