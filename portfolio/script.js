@@ -1,5 +1,5 @@
 // Self-check
-let requirements = `Итоговая оценка: 60/60.
+let requirements = `Итоговая оценка: 70/70.
 1. Вёрстка +10
   - вёрстка видеоплеера: есть само видео, в панели управления есть кнопка Play/Pause, прогресс-бар, кнопка Volume/Mute, регулятор громкости звука +5
   - в футере приложения есть ссылка на гитхаб автора приложения, год создания приложения, логотип курса со ссылкой на курс +5
@@ -164,7 +164,7 @@ function updateVolume() {
   const percent = this.value / 100;
   updateMuteButton(percent);
   video[this.name] = percent;
-  volume.style.background = `linear-gradient(to right, var(--color-gold) 0%, var(--color-gold) ${percent * 100}%, var(--color-white) ${percent * 100}%, var(--color-white) 100%)`;
+  volume.style.background = `linear-gradient(to right, var(--color-gold) 0%, var(--color-gold) ${percent * 100}%, var(--color-light-grey) ${percent * 100}%, var(--color-light-grey) 100%)`;
 }
 
 const updateVolumeClick = () => {
@@ -175,7 +175,7 @@ const updateVolumeClick = () => {
 const updateProgressAuto = () => {
   const percent = (video.currentTime / video.duration) * 100;
   progress.value = percent;
-  progress.style.background = `linear-gradient(to right, var(--color-gold) 0%, var(--color-gold) ${percent}%, var(--color-white) ${percent}%, var(--color-white) 100%)`;
+  progress.style.background = `linear-gradient(to right, var(--color-gold) 0%, var(--color-gold) ${percent}%, var(--color-light-grey) ${percent}%, var(--color-light-grey) 100%)`;
 }
 
 const updateProgressManual = () => {
