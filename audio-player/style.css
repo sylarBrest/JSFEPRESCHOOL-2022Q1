@@ -34,6 +34,7 @@ body {
     left: -7px; right: -7px;
     top: -7px; bottom: -7px;
     z-index: -1;
+    transition: all 1s;
     background-image: var(--image);
     filter: blur(5px);
     background-size: cover;
@@ -53,6 +54,7 @@ body {
     height: 350px;
     background: url('assets/img/bad_times_roll.webp');
     background-size: contain;
+    transition: all 1s;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
