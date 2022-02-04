@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background: #000000;
+    min-width: 320px;
+}
+
+.container {
+    width: calc(100% - 40px);
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.header-container {
+    padding: 5px 20px;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.logo {
+    background: url('assets/svg/logo.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 50px;
+    width: 50px;
+    margin-right: auto;
+    transition: 1s;
+    cursor: pointer;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: #ffffff;
+    font: normal normal 20px/40px 'Roboto', Verdana, sans-serif;
+    transition: all 1s;
+    cursor: pointer;
+}
+
+.nav-item:hover {
+    color: #bdae82;
+}
+
+.main {
+    background-image: url('assets/img/forest.webp');
+    background-size: cover;
+    background-position: center;
+    height: calc(100vh - 120px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 1s;
+}
+
+.play {
+    background: transparent;
+    background: url('assets/svg/play.svg');
+    background-repeat: no-repeat;
+    background-size: 130px 130px;
+    transition: all 1s;
+    border: 0;
+    height: 130px;
+    cursor: pointer;
+    width: 130px;
+}
+
+.pause {
+    background: url('assets/svg/pause.svg');
+    background-repeat: no-repeat;
+    background-size: 130px 130px;
+    transition: all 1s;
+}
+
+.play:hover {
+    filter: brightness(88%);
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 20px;
+    gap: 100px;
+}
+
+.footer-data {
+    display: flex;
+    gap: 20px;
+    color: #ffffff;
+    font: normal normal 20px/40px 'Roboto', Verdana, sans-serif;
+    align-self: center;
+    margin-right: auto;
+}
+
+.github-link {
+    text-decoration: none;
+    transition: 1s;
+    color: #ffffff;
+}
+
+.nav-link:hover,
+.github-link:hover {
+    color: #bdae82;
+}
+
+.download {
+    background: url('assets/svg/download.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: 1s;
+    height: 50px;
+    cursor: pointer;
+    width: 50px;
+
+}
+
+.rss-logo {
+    background: url('assets/svg/rss.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: 1s;
+    height: 50px;
+    cursor: pointer;
+    width: 135px;
+}
+
+.active {
+    color: #bdae82;
+}
+
+.logo.active,
+.logo:hover,
+.rss-logo:hover,
+.download:hover {
+    filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%) contrast(87%);
+}
