@@ -1,23 +1,25 @@
 // Self-check
-let requirements = `Итоговая оценка: 85/85.
-1. Смена изображений в секции portfolio +25
-Изображения разных времён года получаем из папок с соответствующими названиями
-Изображения заменены на другие с целью улучшения качества созданного приложения
-  - при кликах по кнопкам Winter, Spring, Summer, Autumn в секции portfolio отображаются изображения из папки с соответствующим названием +20
-  - кнопка, по которой кликнули, становится активной т.е. выделяется стилем. Другие кнопки при этом будут неактивными +5
-2. Перевод страницы на два языка +25
-Для перевода используется файл translate.js
-  - при клике по надписи ru англоязычная страница переводится на русский язык +10
-  - при клике по надписи en русскоязычная страница переводится на английский язык +10
-  - надписи en или ru, соответствующие текущему языку страницы, становятся активными т.е. выделяются стилем +5
-3. Переключение светлой и тёмной темы +25
-Внешний вид тёмной темы соответствует макету, который верстали в предыдущих частях задания, внешний вид светлой темы соответствует следующему варианту макета - блоки и секции header, hero, contacts, footer остались без изменений, в оставшихся секциях цвет фона и шрифта поменялись местами: фон стал белым, шрифт черным.
-На страницу добавлен переключатель при клике по которому:
-  - тёмная тема приложения сменяется светлой +10
-  - светлая тема приложения сменяется тёмной +10
-  - после смены светлой и тёмной темы интерактивные элементы по-прежнему изменяют внешний вид при наведении и клике и при этом остаются видимыми на странице (нет ситуации с белым шрифтом на белом фоне) +5
-4. Дополнительный функционал: выбранный пользователем язык отображения страницы, набор изображений portfolio и тема сохраняются при перезагрузке страницы +5
-5. Дополнительный функционал: эффект заполнения кнопок внутрь в секции portfolio при наведении +5
+let requirements = `Итоговая оценка: 70/70.
+1. Вёрстка +10
+  - вёрстка видеоплеера: есть само видео, в панели управления есть кнопка Play/Pause, прогресс-бар, кнопка Volume/Mute, регулятор громкости звука +5
+  - в футере приложения есть ссылка на гитхаб автора приложения, год создания приложения, логотип курса со ссылкой на курс +5
+2. Кнопка Play/Pause на панели управления +10
+  - при клике по кнопке Play/Pause запускается или останавливается проигрывание видео +5
+  - внешний вид и функционал кнопки изменяется в зависимости от того, проигрывается ли видео в данный момент +5
+3. Прогресс-бар отображает прогресс проигрывания видео. При перемещении ползунка прогресс-бара вручную меняется текущее время проигрывания видео. Разный цвет прогресс-бара до и после ползунка +10
+4. При перемещении ползунка регулятора громкости звука можно сделать звук громче или тише. Разный цвет регулятора громкости звука до и после ползунка +10
+5. При клике по кнопке Volume/Mute можно включить или отключить звук. Одновременно с включением/выключением звука меняется внешний вид кнопки. Также внешний вид кнопки меняется, если звук включают или выключают перетягиванием регулятора громкости звука от нуля или до нуля +10
+6. Кнопка Play/Pause в центре видео +10
+  - есть кнопка Play/Pause в центре видео при клике по которой запускается видео и отображается панель управления +5
+  - когда видео проигрывается, кнопка Play/Pause в центре видео скрывается, когда видео останавливается, кнопка снова отображается +5
+7. Очень высокое качество оформления приложения и/или дополнительный не предусмотренный в задании функционал, улучшающий качество приложения +10
+  - видео встроено в проект Портфолио
+  - адаптив "работает" вплоть до 320px и не "ломает" вёрстку
+  - есть кнопка переключения в полноэкранный режим:
+    * по нажатию на неё происходит переход в полноэкранный режим, кнопка меняется на другую;
+    * в полноэкранном режиме отображаются созданные элементы управления;
+    * элементы управления съезжают вниз экрана и "растягиваются" на всю ширину экрана;
+    * при нажатии на кнопку выхода из полноэкранного режима или при нажатии на кнопку ESC всё возвращаетс как было до входа в полноэкранный режим.
 `;
 
 console.log(requirements);
@@ -91,7 +93,7 @@ const changeImageEvent = (event) => {
   }
 };
 
-// Caching images
+// Caching images & video
 const preloadImages = (season) => {
   for(let i = 1; i <= 6; i++) {
     const img = new Image();
@@ -137,9 +139,98 @@ function lightToDark() {
   }
 }
 
+// Video player
+const player = document.querySelector('.video-player');
+const video = player.querySelector('.video');
+const controls = player.querySelector('.controls');
+const play = player.querySelector('.play');
+const progress = player.querySelector('.progress');
+const volumeButton = player.querySelector('.volume-button');
+const volume = player.querySelector('.volume');
+const playButton = player.querySelector('.video-player-button');
+const poster = player.querySelector('.video-poster');
+const fullScreenButton = player.querySelector('.expand');
+
+const togglePlay = () => (video.paused) ? video.play() : video.pause();
+
+const updatePlayButton = () => play.style.backgroundImage = (video.paused) ? `url('assets/svg/play.svg')` : `url('assets/svg/pause.svg')`;
+
+const updateMuteButton = vol => (vol) ? volumeButton.classList.remove('mute') : volumeButton.classList.add('mute');
+
+function updateVolume() {
+  if (video.muted) {
+    video.muted = !video.muted;
+  }
+  const percent = this.value / 100;
+  updateMuteButton(percent);
+  video[this.name] = percent;
+  volume.style.background = `linear-gradient(to right, var(--color-gold) 0%, var(--color-gold) ${percent * 100}%, var(--color-light-grey) ${percent * 100}%, var(--color-light-grey) 100%)`;
+}
+
+const updateVolumeClick = () => {
+  volumeButton.classList.toggle('mute');
+  video.muted = !video.muted;
+}
+
+const updateProgressAuto = () => {
+  const percent = (video.currentTime / video.duration) * 100;
+  progress.value = percent;
+  progress.style.background = `linear-gradient(to right, var(--color-gold) 0%, var(--color-gold) ${percent}%, var(--color-light-grey) ${percent}%, var(--color-light-grey) 100%)`;
+}
+
+const updateProgressManual = () => {
+  video.currentTime = progress.value / 100 * video.duration;
+  updateProgressAuto();
+}
+
+const togglePlayButton = () => playButton.style.visibility = (!video.paused) ? 'hidden' : 'visible';
+
+const hidePoster = () => {
+  poster.style.opacity = 0;
+  poster.style.pointerEvents = 'none';
+  poster.style.display = 'block';
+}
+
+const toggleFullScreen = () => {
+  if (document.fullscreenElement) {
+    document.exitFullscreen();
+    fullScreenButton.classList.remove('fullscreen');
+    controls.classList.remove('fullscreen');
+  } else {
+    player.requestFullscreen();
+    fullScreenButton.classList.add('fullscreen');
+    controls.classList.add('fullscreen');
+  }
+}
+
+const exitFullScreen = () => {
+  if (!document.fullscreenElement) {
+    fullScreenButton.classList.remove('fullscreen');
+    controls.classList.remove('fullscreen');
+  }
+}
+
 variable['seasons'].forEach(el => preloadImages(el));
 variable['theme-change'].addEventListener('click', changeThemeOnClick);
 variable['switch-lng'].addEventListener('click', makeTranslate);
 variable['portfolio-buttons'].addEventListener('click', changeImageEvent);
 variable['hamburger'].addEventListener('click', toggleMenu);
 variable['nav'].addEventListener('click', closeMenu);
+poster.addEventListener('click', hidePoster);
+poster.addEventListener('click', togglePlay);
+video.addEventListener('click', togglePlay);
+play.addEventListener('click', togglePlay);
+video.addEventListener('play', updatePlayButton);
+video.addEventListener('pause', updatePlayButton);
+video.addEventListener('play', togglePlayButton);
+video.addEventListener('pause', togglePlayButton);
+video.addEventListener('timeupdate', updateProgressAuto);
+volume.addEventListener('input', updateVolume);
+volume.addEventListener('change', updateVolume);
+volumeButton.addEventListener('click', updateVolumeClick);
+progress.addEventListener('click', updateProgressManual);
+progress.addEventListener('input', updateProgressManual);
+playButton.addEventListener('click', hidePoster);
+playButton.addEventListener('click', togglePlay);
+fullScreenButton.addEventListener('click', toggleFullScreen);
+document.addEventListener('fullscreenchange', exitFullScreen);
