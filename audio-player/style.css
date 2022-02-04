@@ -59,13 +59,13 @@ body {
 .play,
 .next {
     background: transparent;
-    background-size: 40px 40px;
+    background-size: 50px 50px;
     background-position: center;
     border: 0;
     background-repeat: no-repeat;
     cursor: pointer;
-    height: 40px;
-    width: 40px;
+    height: 50px;
+    width: 50px;
     transition: 0.5s;
 }
 
@@ -92,9 +92,6 @@ body {
 
 .play {
     background-image: url('assets/svg/play.svg');
-    background-size: 50px 50px;
-    height: 50px;
-    width: 50px;
 }
 
 .next {
@@ -151,6 +148,9 @@ body {
     width: 135px;
 }
 
+.prev:hover,
+.play:hover,
+.next:hover,
 .rss-logo:hover {
     filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%) contrast(87%);
 }
