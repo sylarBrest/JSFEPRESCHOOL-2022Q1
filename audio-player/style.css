@@ -8,7 +8,6 @@ body {
     display: flex;
     flex-direction: column;
     min-width: 320px;
-    font: normal normal 16px/30px 'Roboto', Verdana, sans-serif;
 }
 
 .container {
@@ -26,25 +25,66 @@ body {
     align-items: center;
     justify-content: center;
     transition: all 1s;
+    --image: url('assets/img/bad_times_roll.webp');
+}
+
+.main::before {
+    content: '';
+    position: fixed;
+    left: -7px; right: -7px;
+    top: -7px; bottom: -7px;
+    z-index: -1;
+    background-image: var(--image);
+    filter: blur(5px);
+    background-size: cover;
+    background-position: center center;
 }
 
 .audio-player {
     width: 350px;
-    background: violet;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.25);
 }
 
 .cover {
     width: 100%;
     height: 350px;
-    background: turquoise;
+    background: url('assets/img/bad_times_roll.webp');
+    background-size: contain;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.under {
+    background: linear-gradient(to top right, rgb(43, 43, 43), rgb(209, 209, 209));
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.info {
+    padding: 0 10px;;
+}
+
+.artist {
+    line-height: 0;
+    padding-top: 10px;
+    font: normal bold 20px/20px 'Roboto', Verdana, sans-serif;
+    color: blue;
+}
+
+.song {
+    font: normal normal 16px/20px 'Roboto', Verdana, sans-serif;
 }
 
 .controls {
     display: flex;
     flex-direction: column;
+    padding: 0 10px;
 }
 
 .control-buttons {
@@ -57,7 +97,8 @@ body {
 
 .prev,
 .play,
-.next {
+.next,
+.stop {
     background: transparent;
     background-size: 50px 50px;
     background-position: center;
@@ -71,16 +112,16 @@ body {
 
 .progress {
     background: linear-gradient(to right, #bdae82 0%, #bdae82 0%, #acacac 0%, #acacac 100%);
-    height: 7px;
-    border-radius: 5px;
+    height: 5px;
+    border-radius: 2px;
     outline: none;
     -webkit-appearance: none;
 }
 
 .progress::-webkit-slider-thumb {
     width: 4px;
-    height: 15px;
-    border-radius: 25%;
+    height: 12px;
+    border-radius: 15%;
     -webkit-appearance: none;
     cursor: pointer;
     background: red;
@@ -98,6 +139,10 @@ body {
     background-image: url('assets/svg/next.svg');
 }
 
+.stop {
+    background-image: url('assets/svg/stop.svg');
+}
+
 .pause {
     background-image: url('assets/svg/pause.svg');
 }
@@ -106,6 +151,15 @@ body {
     display: flex;
     justify-content: space-between;
     padding: 0 10px;
+    font: normal bold 16px/30px 'Roboto', Verdana, sans-serif;
+}
+
+.current {
+    color: #ffffff;
+}
+
+.duration {
+    color: #0300b8;
 }
 
 .footer {
