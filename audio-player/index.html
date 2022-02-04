@@ -15,9 +15,24 @@
 </head>
 <body>
     <main class="main">
+        <div class="audio-player">
+            <div class="cover"></div>
+            <div class="controls">
+                <div class="control-buttons">
+                    <button class="prev"></button>
+                    <button class="play"></button>
+                    <button class="next"></button>
+                </div>
+                <input type="range" class="progress" name="progress" value="0" min="0" max="100" step="0.01">
+                <div class="time">
+                    <span class="current">0:00</span>
+                    <span class="duration">03:00</span>
+                </div>
+            </div>
+        </div>
     </main>
     <footer class="footer">
-        <div class="container">
+        <div class="container footer-container">
             <div class="footer-data">
                 <span class="copyright">&copy;</span>
                 <span class="year">2022</span>
