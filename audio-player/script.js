@@ -26,6 +26,16 @@ const progressBar = audioPlayer.querySelector('.progress');
 const currentTime = audioPlayer.querySelector('.current');
 const duration = audioPlayer.querySelector('.duration');
 
+const songs = [{artist: 'The Offspring', song: 'Let the Bad Times Roll', short: 'bad_times_roll', duration: '3:18'}, 
+{artist: 'Chevelle', song: 'Jars', short: 'jars', duration: '3:19'},
+{artist: 'My Chemical Romance', song: 'Na Na Na (Na Na Na Na Na Na Na Na Na)', short: 'nanana', duration: '3:26'},
+{artist: 'All Time Low', song: 'Outlines', short: 'outlines', duration: '3:35'},
+{artist: 'PAIN', song: 'Party in My Head', short: 'party_in_my_head', duration: '3:08'},];
+
+let songIndex = 0;
+
+let isMouseDownOnSlider = false;
+
 audio.volume = 0.5;
 
 const togglePlay = () => (audio.paused) ? audio.play() : audio.pause();
@@ -42,27 +52,17 @@ function getTimeCodeFromNum(num) {
   }
 
 const updateProgressAuto = () => {
-    const percent = (audio.currentTime / audio.duration) * 100;
+  const percent = (audio.currentTime / audio.duration) * 100;
+  if (!isMouseDownOnSlider) {
     progressBar.value = percent;
-    progressBar.style.background = `linear-gradient(to right, #bdae82 0%, #bdae82 ${percent}%, #acacac ${percent}%, #acacac 100%)`;
+  }
+  progressBar.style.background = `linear-gradient(to right, #bdae82 0%, #bdae82 ${percent}%, #acacac ${percent}%, #acacac 100%)`;
 }
 
 const updateProgressManual = () => {
-    audio.currentTime = progressBar.value / 100 * audio.duration;
+  audio.currentTime = (audio.duration || 0) * progressBar.value / 100;
   updateProgressAuto();
 }
-
-const songs = [{artist: 'The Offspring', song: 'Let the Bad Times Roll', short: 'bad_times_roll', duration: '3:18'}, 
-{artist: 'Chevelle', song: 'Jars', short: 'jars', duration: '3:19'},
-{artist: 'My Chemical Romance', song: 'Na Na Na (Na Na Na Na Na Na Na Na Na)', short: 'nanana', duration: '3:26'},
-{artist: 'All Time Low', song: 'Outlines', short: 'outlines', duration: '3:35'},
-{artist: 'PAIN', song: 'Party in My Head', short: 'party_in_my_head', duration: '3:08'},];
-
-let songIndex = 0;
-
-const playSong = () => audio.play();
-
-const pauseSong = () => audio.pause();
 
 const loadSong = index => {
   progressBar.value = 0;
@@ -80,7 +80,7 @@ const nextSong = () => {
     songIndex = 0;
   }
   loadSong(songIndex);
-  playSong();
+  audio.play();
 }
 
 const prevSong = () => {
@@ -89,7 +89,7 @@ const prevSong = () => {
     songIndex = songs.length - 1;
   }
   loadSong(songIndex);
-  playSong();
+  audio.play();
 }
 
 playButton.addEventListener('click', togglePlay);
@@ -103,3 +103,5 @@ audio.addEventListener('ended', nextSong);
 prevButton.addEventListener('click', prevSong);
 progressBar.addEventListener('click', updateProgressManual);
 progressBar.addEventListener('input', updateProgressManual);
+progressBar.addEventListener('mousedown', () => isMouseDownOnSlider = true);
+progressBar.addEventListener('mouseup', () => isMouseDownOnSlider = false);
