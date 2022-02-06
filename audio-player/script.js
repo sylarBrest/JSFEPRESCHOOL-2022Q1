@@ -87,7 +87,7 @@ const prevSong = () => {
 const updateCurrentTime = () => currentTime.textContent = getTimeCodeFromNum(audio.currentTime);
 
 const updateProgressAuto = () => {
-  const percent = (audio.currentTime / audio.duration) * 100;
+  const percent = (isNaN(audio.duration)) ? 0 : (audio.currentTime / audio.duration) * 100;
   if (!isMouseDownOnSlider) {
     progressBar.value = percent;
   }
