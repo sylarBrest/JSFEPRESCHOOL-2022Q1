@@ -151,6 +151,8 @@ const playButton = player.querySelector('.video-player-button');
 const poster = player.querySelector('.video-poster');
 const fullScreenButton = player.querySelector('.expand');
 
+let isMouseDownOnSlider = false;
+
 const togglePlay = () => (video.paused) ? video.play() : video.pause();
 
 const updatePlayButton = () => play.style.backgroundImage = (video.paused) ? `url('assets/svg/play.svg')` : `url('assets/svg/pause.svg')`;
@@ -174,14 +176,13 @@ const updateVolumeClick = () => {
 
 const updateProgressAuto = () => {
   const percent = (video.currentTime / video.duration) * 100;
-  progress.value = percent;
+  if (!isMouseDownOnSlider) {
+    progress.value = percent;
+  }
   progress.style.background = `linear-gradient(to right, var(--color-gold) 0%, var(--color-gold) ${percent}%, var(--color-light-grey) ${percent}%, var(--color-light-grey) 100%)`;
 }
 
-const updateProgressManual = () => {
-  video.currentTime = progress.value / 100 * video.duration;
-  updateProgressAuto();
-}
+const updateProgressManual = () => video.currentTime = progress.value / 100 * video.duration;
 
 const togglePlayButton = () => playButton.style.visibility = (!video.paused) ? 'hidden' : 'visible';
 
@@ -228,8 +229,9 @@ video.addEventListener('timeupdate', updateProgressAuto);
 volume.addEventListener('input', updateVolume);
 volume.addEventListener('change', updateVolume);
 volumeButton.addEventListener('click', updateVolumeClick);
-progress.addEventListener('click', updateProgressManual);
-progress.addEventListener('input', updateProgressManual);
+progress.addEventListener('change', updateProgressManual);
+progress.addEventListener('mousedown', () => isMouseDownOnSlider = true);
+progress.addEventListener('mouseup', () => isMouseDownOnSlider = false);
 playButton.addEventListener('click', hidePoster);
 playButton.addEventListener('click', togglePlay);
 fullScreenButton.addEventListener('click', toggleFullScreen);
