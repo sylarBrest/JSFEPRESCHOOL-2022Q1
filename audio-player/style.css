@@ -1,0 +1,212 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-width: 320px;
+}
+
+.container {
+    width: calc(100% - 40px);
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.main {
+    background-size: cover;
+    background-position: center;
+    height: calc(100vh - 60px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 1s;
+    --image: url('assets/img/bad_times_roll.webp');
+}
+
+.main::before {
+    content: '';
+    position: fixed;
+    left: -7px; right: -7px;
+    top: -7px; bottom: -7px;
+    z-index: -1;
+    transition: all 1s;
+    background-image: var(--image);
+    filter: blur(5px);
+    background-size: cover;
+    background-position: center center;
+}
+
+.audio-player {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.25);
+}
+
+.cover {
+    width: 100%;
+    height: 350px;
+    background: url('assets/img/bad_times_roll.webp');
+    background-size: contain;
+    transition: all 1s;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.under {
+    background: linear-gradient(to top right, rgb(43, 43, 43), rgb(209, 209, 209));
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.info {
+    padding: 0 10px;;
+}
+
+.artist {
+    line-height: 0;
+    padding-top: 10px;
+    font: normal bold 20px/20px 'Roboto', Verdana, sans-serif;
+    color: blue;
+}
+
+.song {
+    font: normal normal 16px/20px 'Roboto', Verdana, sans-serif;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
+}
+
+.control-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+    gap: 5px;
+}
+
+.prev,
+.play,
+.next,
+.stop {
+    background: transparent;
+    background-size: 50px 50px;
+    background-position: center;
+    border: 0;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    height: 50px;
+    width: 50px;
+    transition: 0.5s;
+}
+
+.progress {
+    background: linear-gradient(to right, #bdae82 0%, #bdae82 0%, #acacac 0%, #acacac 100%);
+    height: 5px;
+    border-radius: 2px;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.progress::-webkit-slider-thumb {
+    width: 4px;
+    height: 12px;
+    border-radius: 15%;
+    -webkit-appearance: none;
+    cursor: pointer;
+    background: red;
+}
+
+.prev {
+    background-image: url('assets/svg/prev.svg');
+}
+
+.play {
+    background-image: url('assets/svg/play.svg');
+}
+
+.next {
+    background-image: url('assets/svg/next.svg');
+}
+
+.stop {
+    background-image: url('assets/svg/stop.svg');
+}
+
+.pause {
+    background-image: url('assets/svg/pause.svg');
+}
+
+.time {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    font: normal bold 16px/30px 'Roboto', Verdana, sans-serif;
+}
+
+.current {
+    color: #ffffff;
+}
+
+.duration {
+    color: #0300b8;
+}
+
+.footer {
+    background: #000000;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 20px;
+    gap: 100px;
+}
+
+.footer-data {
+    display: flex;
+    gap: 20px;
+    color: #ffffff;
+    font: normal normal 20px/40px 'Roboto', Verdana, sans-serif;
+    align-self: center;
+    margin-right: auto;
+}
+
+.github-link {
+    text-decoration: none;
+    transition: 1s;
+    color: #ffffff;
+}
+
+.github-link:hover {
+    color: #bdae82;
+}
+
+.rss-logo {
+    background: url('assets/svg/rss.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: 1s;
+    height: 50px;
+    cursor: pointer;
+    width: 135px;
+}
+
+.prev:hover,
+.play:hover,
+.next:hover,
+.rss-logo:hover {
+    filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%) contrast(87%);
+}
