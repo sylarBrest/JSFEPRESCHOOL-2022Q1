@@ -1,4 +1,4 @@
-let requirements = `Итоговая оценка: 0/60.
+let requirements = `Итоговая оценка: 60/60.
 1. Вёрстка +10
   - вёрстка аудиоплеера: есть кнопка Play/Pause, кнопки "Вперёд" и "Назад" для пролистывания аудиотреков, прогресс-бар, отображается название и автор трека +5
   - в футере приложения есть ссылка на гитхаб автора приложения, год создания приложения, логотип курса со ссылкой на курс +5
@@ -87,7 +87,7 @@ const prevSong = () => {
 const updateCurrentTime = () => currentTime.textContent = getTimeCodeFromNum(audio.currentTime);
 
 const updateProgressAuto = () => {
-  const percent = (audio.currentTime / audio.duration) * 100;
+  const percent = (isNaN(audio.duration)) ? 0 : (audio.currentTime / audio.duration) * 100;
   if (!isMouseDownOnSlider) {
     progressBar.value = percent;
   }
