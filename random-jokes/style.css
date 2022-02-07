@@ -1,3 +1,12 @@
+:root {
+    --color-background: #df9077;
+    --color-text: #ffffff;
+    --color-text-hover: #000000;
+    --color-button: #bc81d3;
+    --color-button-hover: #81a2d3;
+    --color-quote: #186a07;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -18,7 +27,7 @@ body {
 }
 
 .main {
-    background: #9fd381;
+    background: var(--color-background);
     height: calc(100vh - 60px);
     display: flex;
     flex-direction: column;
@@ -27,28 +36,55 @@ body {
     gap: 20px;
 }
 
+.lang,
 .button {
     border: 0;
-    background: #bc81d3;
+    align-self: flex-end;
+    margin: 20px 20px auto 0;
     text-transform: uppercase;
-    border-radius: 5px;
     padding: 0 20px;
     font: normal normal 20px/40px 'Roboto', Verdana, Arial, sans-serif;
-    box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.25);
-    color: #ffffff;
-    transition: 1s;
+    border-radius: 5px;
+    background: var(--color-button);
+    color: var(--color-text);
+    cursor: pointer;
+    transition: background 1s, color 1s;
+    width: 70px;
 }
 
+.animation {
+    background: url('assets/svg/cat.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 70%;
+    height: 70%;
+}
+
+.button {
+    margin: 0 auto;
+    box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.25);
+    width: 260px;
+}
+
+.lang.ru,
+.lang:hover,
 .button:hover {
-    background: #81a2d3;
-    color: #000000;
+    background: var(--color-button-hover);
+    color: var(--color-text-hover);
+}
+
+.lang.ru:hover {
+    background: var(--color-button);
+    color: var(--color-text);   
 }
 
 .quote {
     width: calc(100% - 40px);
+    flex-basis: 30%;
     max-width: 768px;
     font: normal normal 30px/40px 'Roboto', Verdana, Arial, sans-serif;
-    color: #acacac;
+    color: var(--color-quote);
     text-align: center;
 }
 
