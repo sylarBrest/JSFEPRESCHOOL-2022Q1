@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background: #000000;
+    min-width: 320px;
+}
+
+.container {
+    width: calc(100% - 40px);
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.header-container {
+    padding: 5px 20px;
+}
+
+.main {
+    height: calc(100vh - 120px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 1s;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 20px;
+}
+
+.footer-data {
+    display: flex;
+    gap: 20px;
+    color: #ffffff;
+    font: normal normal 20px/40px 'Roboto', Verdana, sans-serif;
+    align-self: center;
+    margin-right: auto;
+}
+
+.github-link {
+    text-decoration: none;
+    transition: 1s;
+    color: #ffffff;
+}
+
+.github-link:hover {
+    color: #bdae82;
+}
+
+.rss-logo {
+    background: url('assets/svg/rss.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: 1s;
+    height: 50px;
+    cursor: pointer;
+    width: 135px;
+}
+
+.rss-logo:hover {
+    filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%) contrast(87%);
+}
