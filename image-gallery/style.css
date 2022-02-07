@@ -7,8 +7,8 @@
 body {
     display: flex;
     flex-direction: column;
-    background: #000000;
     min-width: 320px;
+    background: #000000;
 }
 
 .container {
@@ -20,14 +20,40 @@ body {
 
 .header-container {
     padding: 5px 20px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    background: url('assets/svg/flickr-logo.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: 1s;
+    height: 20px;
+    cursor: pointer;
+    width: 50px;
+}
+
+.title {
+    background: url('assets/svg/flickr.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: 1s;
+    height: 30px;
+    cursor: pointer;
+    width: 150px;
 }
 
 .main {
-    height: calc(100vh - 120px);
+    min-height: calc(100vh - 120px);
+}
+
+.main-container {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
     justify-content: center;
-    transition: all 1s;
+    gap: 10px;
 }
 
 .footer-container {
