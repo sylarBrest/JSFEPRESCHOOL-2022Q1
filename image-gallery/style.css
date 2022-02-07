@@ -45,6 +45,43 @@ body {
     width: 150px;
 }
 
+.search {
+    margin-left: auto;
+}
+
+form {
+    position: relative;
+}
+
+.search-input {
+    width: 350px;
+    height: 40px;
+    border: 0;
+    border-radius: 40px;
+    padding-left: 15px;
+    font: normal normal 20px/40px 'Roboto', Verdana, sans-serif;
+    outline: none;
+    position: relative;
+}
+
+.search-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.search-button::before {
+    content: "\f002";
+    font-family: FontAwesome;
+    font-size: 20px;
+    color: #324b4e;
+}
+
 .main {
     min-height: calc(100vh - 120px);
 }
