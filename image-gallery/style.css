@@ -62,6 +62,12 @@ form {
     font: normal normal 20px/40px 'Roboto', Verdana, sans-serif;
     outline: none;
     position: relative;
+    color: #000000;
+}
+
+.search-input::-webkit-search-cancel-button{
+    position: relative;
+    right: 40px;
 }
 
 .search-button {
@@ -91,6 +97,11 @@ form {
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
+}
+
+.gallery-img {
+    width: 30%;
+    min-width: 280px;
 }
 
 .footer-container {
