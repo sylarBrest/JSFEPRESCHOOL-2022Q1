@@ -14,7 +14,6 @@ body {
     display: flex;
     flex-direction: column;
     min-width: 320px;
-    background: var(--color-black);
 }
 
 .container {
@@ -22,6 +21,11 @@ body {
     max-width: 1440px;
     margin: 0 auto;
     padding: 0 20px;
+}
+
+.header,
+.footer {
+    background: var(--color-black);
 }
 
 .header-container {
