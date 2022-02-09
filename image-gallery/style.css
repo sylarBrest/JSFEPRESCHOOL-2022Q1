@@ -1,3 +1,9 @@
+:root {
+    --color-black: #000000;
+    --color-gold: #bdae82;
+    --color-white: #ffffff;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -8,7 +14,7 @@ body {
     display: flex;
     flex-direction: column;
     min-width: 320px;
-    background: #000000;
+    background: var(--color-black);
 }
 
 .container {
@@ -23,6 +29,7 @@ body {
     height: 60px;
     display: flex;
     align-items: center;
+    gap: 10px;
 }
 
 .logo {
@@ -50,7 +57,7 @@ body {
     font: normal normal 20px/40px 'Roboto', Verdana, sans-serif;
     outline: none;
     position: relative;
-    color: #000000;
+    color: var(--color-black);
 }
 
 .search-input::-webkit-search-cancel-button{
@@ -74,7 +81,11 @@ body {
     content: "\f002";
     font-family: FontAwesome;
     font-size: 20px;
-    color: #324b4e;
+    color: var(--color-black);
+}
+
+.search-button::before:hover {
+    color: var(--color-gold);
 }
 
 .main {
@@ -86,10 +97,17 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
+    padding: 20px 0;
+}
+
+.no-results {
+    color: var(--color-white);
+    font: normal bold 30px/60px 'Roboto', Verdana, sans-serif;
 }
 
 .gallery-img {
-    width: 30%;
+    width: 32%;
+    object-fit: contain;
     min-width: 280px;
 }
 
@@ -102,7 +120,7 @@ body {
 .footer-data {
     display: flex;
     gap: 20px;
-    color: #ffffff;
+    color: var(--color-white);
     font: normal normal 20px/40px 'Roboto', Verdana, sans-serif;
     align-self: center;
     margin-right: auto;
@@ -111,11 +129,11 @@ body {
 .github-link {
     text-decoration: none;
     transition: 1s;
-    color: #ffffff;
+    color: var(--color-white);
 }
 
 .github-link:hover {
-    color: #bdae82;
+    color: var(--color-gold);
 }
 
 .rss-logo {
@@ -131,4 +149,38 @@ body {
 .logo:hover,
 .rss-logo:hover {
     filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%) contrast(87%);
+}
+
+@media (max-width: 659px) {
+    .header-container {
+        flex-direction: column;
+        height: 110px;
+    }
+
+    .main {
+        min-height: calc(100vh - 170px);
+    }
+
+    .footer-container {
+        padding: 5px;
+    }
+}
+
+@media (max-width: 399px) {
+    .main {
+        min-height: calc(100vh - 210px);
+    }
+
+    .search-input {
+        width: 280px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-data {
+        margin-right: 0;
+    }
 }
