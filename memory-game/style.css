@@ -1,0 +1,95 @@
+:root {
+    --color-black: #000000;
+    --color-gold: #bdae82;
+    --color-white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-width: 320px;
+    background: var(--color-black);
+}
+
+.container {
+    width: calc(100% - 40px);
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.header-container {
+    padding: 5px 20px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo {
+    background: url('assets/svg/swan.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: 1s;
+    height: 50px;
+    cursor: pointer;
+    width: 50px;
+}
+
+.main {
+    min-height: calc(100vh - 120px);
+}
+
+.main-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px 0;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 20px;
+}
+
+.footer-data {
+    display: flex;
+    gap: 20px;
+    color: var(--color-white);
+    font: normal normal 20px/40px 'Poppins', 'Roboto', Verdana, sans-serif;
+    align-self: center;
+    margin-right: auto;
+}
+
+.github-link {
+    text-decoration: none;
+    transition: 1s;
+    color: var(--color-white);
+}
+
+.github-link:hover {
+    color: var(--color-gold);
+}
+
+.rss-logo {
+    background: url('assets/svg/rss.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: 1s;
+    height: 50px;
+    cursor: pointer;
+    width: 135px;
+}
+
+.logo:hover,
+.rss-logo:hover {
+    filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%) contrast(87%);
+}
