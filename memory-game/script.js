@@ -1,6 +1,6 @@
-let requirements = `Итоговая оценка: 5/60.
+let requirements = `Итоговая оценка: 10/60.
 1. Вёрстка +10
-  -x реализован интерфейс игры +5
+  - реализован интерфейс игры +5
   - в футере приложения есть ссылка на гитхаб автора приложения, год создания приложения, логотип курса со ссылкой на курс +5
 x2. Логика игры. Карточки, по которым кликнул игрок, переворачиваются согласно правилам игры +10
 x3. Игра завершается, когда открыты все карточки +10
@@ -13,3 +13,10 @@ x7. Очень высокое качество оформления прилож
 
 console.log(requirements);
 
+const memoryCards = document.querySelectorAll('.memory-card');
+
+function flipCard() {
+  this.classList.toggle('flip');
+}
+
+memoryCards.forEach(card => card.addEventListener('click', flipCard));
