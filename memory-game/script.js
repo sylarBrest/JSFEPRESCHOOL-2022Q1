@@ -13,7 +13,22 @@ x7. Очень высокое качество оформления прилож
 
 console.log(requirements);
 
-const memoryCards = document.querySelectorAll('.memory-card');
+const gameBoard = document.querySelector('.game-board');
+
+function arrangeCards(rows, cols) {
+  for (let i = 0; i < rows * cols; i++) {
+    const card = `<div class="memory-card">
+    <img class="face" src="assets/svg/${Math.floor(i / 2)}.svg" alt="face ${Math.floor(i / 2)}">
+    <img class="back" src="assets/svg/digits.svg" alt="back digits">
+  </div>
+  `;
+  gameBoard.insertAdjacentHTML('beforeend', card);
+  }
+}
+
+arrangeCards(4, 5);
+
+const memoryCards = gameBoard.querySelectorAll('.memory-card');
 
 function flipCard() {
   this.classList.toggle('flip');
