@@ -29,19 +29,25 @@ function arrangeCards(rows, cols) {
 arrangeCards(4, 5);
 
 let isFlippedCard = false;
+let isLockedBoard = false;
 let firstCard, secondCard;
 
 const memoryCards = gameBoard.querySelectorAll('.memory-card');
 memoryCards.forEach(card => card.addEventListener('click', flipCard));
 
 function flipCard() {
+  if (isLockedBoard) {
+    return;
+  }
+  if (this === firstCard) {
+    return;
+  }
   this.classList.add('flip');
   if (!isFlippedCard) {
     isFlippedCard = true;
     firstCard = this;
     return;
   }
-  isFlippedCard = false;
   secondCard = this;
   checkForMatch();
 }
@@ -53,11 +59,19 @@ function checkForMatch() {
 function disableMatchedCards() {
   firstCard.removeEventListener('click', flipCard);
   secondCard.removeEventListener('click', flipCard);
+  resetBoard();
 }
 
 function unFlipCards() {
+  isLockedBoard = true;
   setTimeout(() => {
     firstCard.classList.remove('flip');
     secondCard.classList.remove('flip');  
+    resetBoard();
   }, 1000);
+}
+
+function resetBoard() {
+  [isFlippedCard, isLockedBoard] = [false, false];
+  [firstCard, secondCard] = [null, null];
 }
