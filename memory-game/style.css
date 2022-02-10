@@ -141,6 +141,30 @@ body {
     font: normal bold 20px/30px 'Poppins', 'Roboto', Verdana, sans-serif;
 }
 
+.record-table {
+    visibility: hidden;
+    position: absolute;
+    overflow: hidden;
+    top: 60px;
+    right: 0;
+    width: 200px;
+    opacity: 0;
+    padding: 10px 50px;
+    background: #ff9b9b;
+    color: var(--color-white);
+    font: normal normal 20px/30px 'Poppins', 'Roboto', Verdana, sans-serif;
+    transition: all 0.5s;
+}
+
+.record-line {
+    text-align: right;
+}
+
+.record-table.open {
+    opacity: 1;
+    visibility: visible;
+}
+
 .memory-card {
     position: relative;
     width: calc(20% - 8px);
