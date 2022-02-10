@@ -34,7 +34,8 @@ body {
     height: 60px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: stretch;
+    gap: 30px;
 }
 
 .logo {
@@ -45,6 +46,33 @@ body {
     height: 50px;
     cursor: pointer;
     width: 50px;
+}
+
+.nav {
+    width: 100%;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: #ffffff;
+    font: normal normal 20px/40px 'Poppins', 'Roboto', Verdana, sans-serif;
+    transition: all 1s;
+    cursor: pointer;
+}
+
+.nav-item:last-child {
+    margin-left: auto;
+}
+
+.nav-item:hover {
+    color: #bdae82;
 }
 
 .main {
@@ -68,6 +96,51 @@ body {
     perspective: 1200px;
 }
 
+.game-over {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    justify-content: space-between;
+    border-radius: 10px;
+    z-index: 1;
+    height: 200px;
+    opacity: 0;
+    visibility: hidden;
+    margin: auto;  
+    background: #ff9b9b;
+    padding: 10px;
+}
+
+.show {
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.5s;
+}
+
+.congrats {
+    padding: 5px 10px;
+    text-align: center;
+    color: white;
+    font: normal normal 30px/40px 'Poppins', 'Roboto', Verdana, sans-serif;
+}
+
+.moves {
+    padding: 5px;
+    text-align: center;
+    font: normal normal 20px/30px 'Poppins', 'Roboto', Verdana, sans-serif;
+}
+  
+.ok {
+    align-self: flex-end;
+    padding: 10px;
+    border: 0;
+    padding: 0 5px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font: normal bold 20px/30px 'Poppins', 'Roboto', Verdana, sans-serif;
+}
+
 .memory-card {
     position: relative;
     width: calc(20% - 8px);
@@ -75,6 +148,7 @@ body {
     transform: scale(1);
     transform-style: preserve-3d;
     transition: transform 0.5s;
+    cursor: url('assets/img/pointer.png') 7 0, pointer;
 }
 
 .memory-card:active {
@@ -89,6 +163,7 @@ body {
 .back,
 .face {
     position: absolute;
+    padding: 5px;
     width: 100%;
     height: 100%;
     border-radius: 5px;

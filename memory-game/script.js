@@ -1,10 +1,10 @@
-let requirements = `Итоговая оценка: 40/60.
+let requirements = `Итоговая оценка: 50/60.
 1. Вёрстка +10
   - реализован интерфейс игры +5
   - в футере приложения есть ссылка на гитхаб автора приложения, год создания приложения, логотип курса со ссылкой на курс +5
 2. Логика игры. Карточки, по которым кликнул игрок, переворачиваются согласно правилам игры +10
 3. Игра завершается, когда открыты все карточки +10
-x4. По окончанию игры выводится её результат - количество ходов, которые понадобились для завершения игры +10
+4. По окончанию игры выводится её результат - количество ходов, которые понадобились для завершения игры +10
 x5. Результаты последних 10 игр сохраняются в local storage. Есть таблица рекордов, в которой сохраняются результаты предыдущих 10 игр +10
 6. По клику на карточку – она переворачивается плавно, если пара не совпадает – обе карточки так же плавно переварачиваются рубашкой вверх +10
 x7. Очень высокое качество оформления приложения и/или дополнительный не предусмотренный в задании функционал, улучшающий качество приложения +10
@@ -13,6 +13,9 @@ x7. Очень высокое качество оформления прилож
 
 console.log(requirements);
 
+let rows = 4, cols = 5;
+
+const newGameButton = document.querySelector('.new-game');
 const gameBoard = document.querySelector('.game-board');
 
 function arrangeCards(rows, cols) {
@@ -26,12 +29,13 @@ function arrangeCards(rows, cols) {
   }
 }
 
-arrangeCards(4, 5);
+arrangeCards(rows, cols);
 
 let isFlippedCard = false;
 let isLockedBoard = false;
 let firstCard, secondCard;
 let moves = 0;
+let unFlipPairs = Math.floor((rows * cols) / 2);
 
 const memoryCards = gameBoard.querySelectorAll('.memory-card');
 memoryCards.forEach(card => card.addEventListener('click', flipCard));
@@ -53,18 +57,33 @@ function flipCard() {
   checkForMatch();
 }
 
-function checkForMatch() {
-  (firstCard.dataset.digit === secondCard.dataset.digit) ? disableMatchedCards() : unFlipCards();
-}
+const checkForMatch = () => (firstCard.dataset.digit === secondCard.dataset.digit) ? disableMatchedCards() : unFlipCards();
 
-function disableMatchedCards() {
+const disableMatchedCards = () => {
   moves++;
+  unFlipPairs--;
   firstCard.removeEventListener('click', flipCard);
   secondCard.removeEventListener('click', flipCard);
+  if (!unFlipPairs) {
+    showGameOver();
+  }
   resetBoard();
 }
 
-function unFlipCards() {
+const gameOver = document.querySelector('.game-over');
+const showModal = () => gameOver.classList.add('show');
+
+const showGameOver = () => {
+  const okButton = gameOver.querySelector('.ok');
+  const pMoves = gameOver.querySelector('.moves');
+  pMoves.textContent = `You make ${moves} moves`;
+  showModal();
+  okButton.addEventListener('click', newGame);
+}
+
+const newGame = () => window.location.reload();
+
+const unFlipCards = () => {
   isLockedBoard = true;
   setTimeout(() => {
     moves++;
@@ -74,15 +93,15 @@ function unFlipCards() {
   }, 1000);
 }
 
-function resetBoard() {
+const resetBoard = () => {
   [isFlippedCard, isLockedBoard] = [false, false];
   [firstCard, secondCard] = [null, null];
 }
 
-function getRandomPosition() {
-  return Math.floor(Math.random() * 20);
-}
+const getRandomPosition = () => Math.floor(Math.random() * 20);
 
 (function shuffleBoard() {
   memoryCards.forEach(card => card.style.order = getRandomPosition());
 })();
+
+newGameButton.addEventListener('click', newGame);
