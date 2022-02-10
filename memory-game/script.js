@@ -39,17 +39,25 @@ function flipCard() {
   if (!isFlippedCard) {
     isFlippedCard = true;
     firstCard = this;
-   } else {
-    isFlippedCard = false;
-    secondCard = this;
-    if (firstCard.dataset.digit === secondCard.dataset.digit) {
-      firstCard.removeEventListener('click', flipCard);
-      secondCard.removeEventListener('click', flipCard);
-    } else {
-      setTimeout(() => {
-        firstCard.classList.remove('flip');
-        secondCard.classList.remove('flip');  
-      }, 1000);
-    }
-   }
- }
+    return;
+  }
+  isFlippedCard = false;
+  secondCard = this;
+  checkForMatch();
+}
+
+function checkForMatch() {
+  (firstCard.dataset.digit === secondCard.dataset.digit) ? disableMatchedCards() : unFlipCards();
+}
+
+function disableMatchedCards() {
+  firstCard.removeEventListener('click', flipCard);
+  secondCard.removeEventListener('click', flipCard);
+}
+
+function unFlipCards() {
+  setTimeout(() => {
+    firstCard.classList.remove('flip');
+    secondCard.classList.remove('flip');  
+  }, 1000);
+}
