@@ -31,6 +31,7 @@ arrangeCards(4, 5);
 let isFlippedCard = false;
 let isLockedBoard = false;
 let firstCard, secondCard;
+let moves = 0;
 
 const memoryCards = gameBoard.querySelectorAll('.memory-card');
 memoryCards.forEach(card => card.addEventListener('click', flipCard));
@@ -57,6 +58,7 @@ function checkForMatch() {
 }
 
 function disableMatchedCards() {
+  moves++;
   firstCard.removeEventListener('click', flipCard);
   secondCard.removeEventListener('click', flipCard);
   resetBoard();
@@ -65,6 +67,7 @@ function disableMatchedCards() {
 function unFlipCards() {
   isLockedBoard = true;
   setTimeout(() => {
+    moves++;
     firstCard.classList.remove('flip');
     secondCard.classList.remove('flip');  
     resetBoard();
@@ -75,3 +78,11 @@ function resetBoard() {
   [isFlippedCard, isLockedBoard] = [false, false];
   [firstCard, secondCard] = [null, null];
 }
+
+function getRandomPosition() {
+  return Math.floor(Math.random() * 20);
+}
+
+(function shuffleBoard() {
+  memoryCards.forEach(card => card.style.order = getRandomPosition());
+})();
