@@ -18,11 +18,20 @@ let rows = 4, cols = 5;
 const newGameButton = document.querySelector('.new-game');
 const gameBoard = document.querySelector('.game-board');
 
+//Array of card faces. As in future should be filled by back-end by getting the filenames of cards 
+const cards = ['amazon', 'apple', 'figma',
+ 'google', 'instagram', 'netflix',
+ 'spotify', 'twitter', 'windows',
+ 'youtube', 'dropbox', 'discord',
+ 'reddit', 'skype', 'whatsapp', 'facebook'];
+
+const getRandomPosition = all => Math.floor(Math.random() * all);
+
 function arrangeCards(rows, cols) {
   for (let i = 0; i < rows * cols; i++) {
-    const card = `<div class="memory-card" data-digit="face${Math.floor(i / 2)}">
-    <img class="face" src="assets/svg/${Math.floor(i / 2)}.svg" alt="face${Math.floor(i / 2)}">
-    <img class="back" src="assets/svg/digits.svg" alt="back digits">
+    const card = `<div class="memory-card" style="order: ${getRandomPosition(rows * cols)};" data-face="${cards[Math.floor(i / 2)]}">
+    <img class="face" src="assets/svg/${cards[Math.floor(i / 2)]}.svg" alt="${cards[Math.floor(i / 2)]}">
+    <img class="back" src="assets/svg/js.svg" alt="back">
   </div>
   `;
   gameBoard.insertAdjacentHTML('beforeend', card);
@@ -36,7 +45,9 @@ let isLockedBoard = false;
 let firstCard, secondCard;
 let moves = 0;
 let unFlipPairs = Math.floor((rows * cols) / 2);
-let recordTable = [/* 1, 34, 45, 44, 55, 45, 67, 7, 78, 90 */];
+
+/* Local Storage */
+let recordTable = [/* 1, 34, 45, 44, 55, 45, 67, 7, 78, 90 */]; //array of 10 last games for storage in localStorage
 
 const setLocalStorage = () => localStorage.setItem('records', JSON.stringify(recordTable));
 
@@ -70,7 +81,7 @@ function flipCard() {
   checkForMatch();
 }
 
-const checkForMatch = () => (firstCard.dataset.digit === secondCard.dataset.digit) ? disableMatchedCards() : unFlipCards();
+const checkForMatch = () => (firstCard.dataset.face === secondCard.dataset.face) ? disableMatchedCards() : unFlipCards();
 
 const disableMatchedCards = () => {
   moves++;
@@ -103,10 +114,17 @@ const fillRecordTable = table => {
 }
 
 const tableRecordsButton = document.querySelector('.table-of-records');
+const mainContainer = document.querySelector('.main-container');
 
-tableRecordsButton.addEventListener('click', () => tableRecord.classList.toggle('open'));
+const toggleOpen = () => {
+  tableRecord.classList.toggle('open');
+  mainContainer.classList.toggle('open');
+}
+
+tableRecordsButton.addEventListener('click', toggleOpen);
 
 const showGameOver = () => {
+  document.title += ` - ${moves} moves`;
   const okButton = gameOver.querySelector('.ok');
   const pMoves = gameOver.querySelector('.moves');
   pMoves.textContent = `You make ${moves} moves`;
@@ -131,11 +149,5 @@ const resetBoard = () => {
   [isFlippedCard, isLockedBoard] = [false, false];
   [firstCard, secondCard] = [null, null];
 }
-
-const getRandomPosition = () => Math.floor(Math.random() * 20);
-
-(function shuffleBoard() {
-  memoryCards.forEach(card => card.style.order = getRandomPosition());
-})();
 
 newGameButton.addEventListener('click', newGame);
