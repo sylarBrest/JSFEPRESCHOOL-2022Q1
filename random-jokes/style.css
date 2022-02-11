@@ -1,0 +1,132 @@
+:root {
+    --color-background: #df9077;
+    --color-text: #ffffff;
+    --color-text-hover: #000000;
+    --color-button: #bc81d3;
+    --color-button-hover: #81a2d3;
+    --color-quote: #186a07;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-width: 320px;
+}
+
+.container {
+    width: calc(100% - 40px);
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.main {
+    background: var(--color-background);
+    height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.lang,
+.button {
+    border: 0;
+    align-self: flex-end;
+    margin: 20px 20px auto 0;
+    text-transform: uppercase;
+    padding: 0 20px;
+    font: normal normal 20px/40px 'Roboto', Verdana, Arial, sans-serif;
+    border-radius: 5px;
+    background: var(--color-button);
+    color: var(--color-text);
+    cursor: pointer;
+    transition: background 1s, color 1s;
+    width: 70px;
+}
+
+.animation {
+    background: url('assets/svg/cat.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 70%;
+    height: 70%;
+}
+
+.button {
+    margin: 0 auto;
+    box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.25);
+    width: 260px;
+}
+
+.lang.ru,
+.lang:hover,
+.button:hover {
+    background: var(--color-button-hover);
+    color: var(--color-text-hover);
+}
+
+.lang.ru:hover {
+    background: var(--color-button);
+    color: var(--color-text);   
+}
+
+.quote {
+    width: calc(100% - 40px);
+    flex-basis: 30%;
+    max-width: 768px;
+    font: normal normal 30px/40px 'Roboto', Verdana, Arial, sans-serif;
+    color: var(--color-quote);
+    text-align: center;
+}
+
+.footer {
+    background: #000000;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 20px;
+}
+
+.footer-data {
+    display: flex;
+    gap: 20px;
+    color: #ffffff;
+    font: normal normal 20px/40px 'Roboto', Verdana, sans-serif;
+    align-self: center;
+    margin-right: auto;
+}
+
+.github-link {
+    text-decoration: none;
+    transition: 1s;
+    color: #ffffff;
+}
+
+.github-link:hover {
+    color: #bdae82;
+}
+
+.rss-logo {
+    background: url('assets/svg/rss.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: 1s;
+    height: 50px;
+    cursor: pointer;
+    width: 135px;
+}
+
+.rss-logo:hover {
+    filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%) contrast(87%);
+}
