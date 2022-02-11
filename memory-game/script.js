@@ -13,7 +13,7 @@ x7. Очень высокое качество оформления прилож
 
 console.log(requirements);
 
-let rows = 4, cols = 5;
+let rows = 4, cols = 5; //Maybe try to give a choice in size of game-Board
 
 const newGameButton = document.querySelector('.new-game');
 const gameBoard = document.querySelector('.game-board');
@@ -25,9 +25,11 @@ const cards = ['amazon', 'apple', 'figma',
  'youtube', 'dropbox', 'discord',
  'reddit', 'skype', 'whatsapp', 'facebook'];
 
+//Simple random function =)
 const getRandomPosition = all => Math.floor(Math.random() * all);
 
-function arrangeCards(rows, cols) {
+//Arrange and shuffle cards on game board
+function arrangeShuffledCards(rows, cols) {
   for (let i = 0; i < rows * cols; i++) {
     const card = `<div class="memory-card" style="order: ${getRandomPosition(rows * cols)};" data-face="${cards[Math.floor(i / 2)]}">
     <img class="face" src="assets/svg/${cards[Math.floor(i / 2)]}.svg" alt="${cards[Math.floor(i / 2)]}">
@@ -38,12 +40,12 @@ function arrangeCards(rows, cols) {
   }
 }
 
-arrangeCards(rows, cols);
+arrangeShuffledCards(rows, cols);
 
 let isFlippedCard = false;
 let isLockedBoard = false;
 let firstCard, secondCard;
-let moves = 0;
+let moves = 0; //moves in game
 let unFlipPairs = Math.floor((rows * cols) / 2);
 
 /* Local Storage */
@@ -97,6 +99,7 @@ const disableMatchedCards = () => {
 const gameOver = document.querySelector('.game-over');
 const showModal = () => gameOver.classList.add('show');
 
+//write result of the game to Array to be placed in Local Storage
 const writeRecord = () => {
   recordTable.push(moves);
   if (recordTable.length > 10) {
@@ -104,25 +107,28 @@ const writeRecord = () => {
   }
 }
 
-const tableRecord = document.querySelector('.record-table');
+const divRecordTable = document.querySelector('.record-table');
 
+//Fill Table of records with records from localStorage
 const fillRecordTable = table => {
   for (let record of table) {
     const pRecord = `<p class="record-line">${record} moves</p>`;
-    tableRecord.insertAdjacentHTML('beforeend', pRecord);
+    divRecordTable.insertAdjacentHTML('beforeend', pRecord);
   }
 }
 
+/* Showing Table of records */
 const tableRecordsButton = document.querySelector('.table-of-records');
 const mainContainer = document.querySelector('.main-container');
 
 const toggleOpen = () => {
-  tableRecord.classList.toggle('open');
+  divRecordTable.classList.toggle('open');
   mainContainer.classList.toggle('open');
 }
 
 tableRecordsButton.addEventListener('click', toggleOpen);
 
+/* Show modal window when found all the pairs*/
 const showGameOver = () => {
   document.title += ` - ${moves} moves`;
   const okButton = gameOver.querySelector('.ok');
