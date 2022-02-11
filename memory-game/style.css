@@ -147,7 +147,6 @@ body {
     overflow: hidden;
     top: 60px;
     right: 0;
-    width: 200px;
     opacity: 0;
     padding: 10px 50px;
     background: #ff9b9b;
@@ -158,6 +157,10 @@ body {
 
 .record-line {
     text-align: right;
+}
+
+.record-main {
+    text-align: center;
 }
 
 .record-table.open {
