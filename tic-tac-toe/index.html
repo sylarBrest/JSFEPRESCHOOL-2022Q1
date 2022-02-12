@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tic tac toe">
+    <meta name="author" content="Aliaksandr Astrouski">
+    <title>Tic tac toe</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto&display=swap" rel="stylesheet"></head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo"></div>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item new-game">New game</li>
+                    <li class="nav-item table-of-records">Table of records</li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main class="main">
+        <div class="container main-container">
+            <div class="game-board"></div>
+            <div class="game-over">
+                <h2 class="congrats">Congratulations!</h2>
+                <p class="moves">The X wins</p>
+                <button class="ok">New game</button>
+            </div>
+            <div class="record-table">
+                <h2 class="record-main">Last 10 games</h2>
+            </div>
+            <div class="darken"></div>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-data">
+                <span class="copyright">&copy;</span>
+                <span class="year">2022</span>
+                <span class="github"><a class="github-link" href="https://github.com/sylarBrest" target="_blank" rel="noopener noreferrer">sylarBrest</a></span>
+            </div>
+            <a class="rss-logo" href="https://rs.school/js-stage0/" target="_blank" rel="noopener noreferrer" title="Rolling Scope School"></a>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
