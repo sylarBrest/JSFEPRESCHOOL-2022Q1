@@ -1,4 +1,4 @@
-let requirements = `Итоговая оценка: 50/60.
+let requirements = `Итоговая оценка: 60/60.
 1. Вёрстка +10
   - реализован интерфейс игры +5
   - в футере приложения есть ссылка на гитхаб автора приложения, год создания приложения, логотип курса со ссылкой на курс +5
@@ -6,7 +6,7 @@ let requirements = `Итоговая оценка: 50/60.
 3. Игра завершается, когда три фигуры выстроились в ряд по вертикали, горизонтали или диагонали +10
 4. По окончанию игры выводится её результат - выигравшая фигура и количество ходов от начала игры до её завершения +10
 5. Результаты последних 10 игр сохраняются в local storage. Есть таблица рекордов, в которой отображаются результаты предыдущих 10 игр +10
-x6. Анимации или звуки, или настройки игры. Баллы начисляются за любой из перечисленных пунктов +10
+6. Звуковое оформление ходов и окна конца игры +10
 x7. Очень высокое качество оформления приложения и/или дополнительный не предусмотренный в задании функционал, улучшающий качество приложения +10
   -x высокое качество оформления приложения предполагает собственное оригинальное оформление равное или отличающееся в лучшую сторону по сравнению с демо
 `;
@@ -28,6 +28,9 @@ arrangeBoard(3);
 
 let moves = 0; //moves in game
 let crossCells = [], roundCells = [];
+const audio = new Audio();
+
+audio.src = 'assets/audio/move.mp3';
 
 const winCells = [
   [0, 1, 2],
@@ -42,15 +45,21 @@ const winCells = [
 
 const checkGameOver = () => {
   if (winCells.some(win => win.every(el => crossCells.includes(el)))) {
+    audio.src = 'assets/audio/win.mp3';
     showGameOver('X');
   } else if (winCells.some(win => win.every(el => roundCells.includes(el)))) {
+    audio.src = 'assets/audio/win.mp3';
     showGameOver('O');
   } else if (moves === 8) {
+    audio.src = 'assets/audio/draw.mp3';
     showGameOver('No one');
   }
 }
 
 const makeMove = (event) => {
+  setTimeout(() => {
+    audio.play();
+  }, 100);
   const toe = (moves % 2) ? 'round' : 'cross';
   event.target.insertAdjacentHTML('beforeend', `<img class="img-cell" src="assets/svg/${toe}.svg" alt="${toe}">`);
   (moves % 2) ? roundCells.push(+event.target.dataset.cell) : crossCells.push(+event.target.dataset.cell);
@@ -109,7 +118,8 @@ tableRecordsButton.addEventListener('click', toggleOpen);
 
 /* Show modal window when found all the pairs*/
 const showGameOver = res => {
-//  document.title += ` - ${moves} moves`;
+  document.title += ` - ${res} won`;
+  audio.play();
   const okButton = gameOver.querySelector('.ok');
   const pMoves = gameOver.querySelector('.moves');
   pMoves.textContent = `${res} won in ${moves+1} moves`;
