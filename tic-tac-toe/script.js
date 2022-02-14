@@ -43,6 +43,8 @@ const winCells = [
   [2, 4, 6],
 ];
 
+const cells = gameBoard.querySelectorAll('.cell');
+
 const checkGameOver = () => {
   if (winCells.some(win => win.every(el => crossCells.includes(el)))) {
     audio.src = 'assets/audio/win.mp3';
@@ -57,14 +59,16 @@ const checkGameOver = () => {
 }
 
 const makeMove = (event) => {
-  setTimeout(() => {
-    audio.play();
-  }, 100);
-  const toe = (moves % 2) ? 'round' : 'cross';
-  event.target.insertAdjacentHTML('beforeend', `<img class="img-cell" src="assets/svg/${toe}.svg" alt="${toe}">`);
-  (moves % 2) ? roundCells.push(+event.target.dataset.cell) : crossCells.push(+event.target.dataset.cell);
-  checkGameOver();
-  moves++;
+  if (event.target.classList.contains('cell')) {
+    setTimeout(() => {
+      audio.play();
+    }, 100);
+    const toe = (moves % 2) ? 'round' : 'cross';
+    event.target.insertAdjacentHTML('beforeend', `<img class="img-cell" src="assets/svg/${toe}.svg" alt="${toe}">`);
+    (moves % 2) ? roundCells.push(+event.target.dataset.cell) : crossCells.push(+event.target.dataset.cell);
+    checkGameOver();
+    moves++;
+  }
 }
 
 gameBoard.addEventListener('click', makeMove);
