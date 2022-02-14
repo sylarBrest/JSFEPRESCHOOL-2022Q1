@@ -199,7 +199,7 @@ body {
 .cell {
     width: 33.333%;
     height: 100px;
-    background: blueviolet;
+    background: #cf9bff;
     border: 2px solid black;
 }
 
@@ -245,4 +245,45 @@ body {
 .logo:hover,
 .rss-logo:hover {
     filter: invert(68%) sepia(75%) saturate(349%) hue-rotate(196deg) brightness(100%) contrast(102%);
+}
+
+@media (max-width: 450px) {
+    .header-container {
+        height: 80px;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+    }
+
+    .nav-item:last-child {
+        margin-left: 0;
+    }
+
+    .main {
+        height: calc(100vh - 180px);
+    }
+
+    .record-table {
+        top: 80px;
+        padding: 10px 40px;
+    }
+
+    .darken {
+        top: 80px;
+        height: calc(100% - 180px);
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        height: 100px;
+        gap: 0;
+    }
+
+    .footer-data {
+        margin-right: 0;
+    }
 }
